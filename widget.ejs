@@ -1,0 +1,64 @@
+<div id="rtrl-widget">
+  <link rel="stylesheet" href="styles/layout.css">
+
+  <%- include('partials/_graph') %>
+
+  <div class="controls">
+    <label for="initial_investment_num">Already saved sum</label>
+    <input type="number" data-parse="int" name="initial_investment" id="initial_investment_num" min="0" max="" step="1" value="0">
+    <input type="range" data-parse="int" name="initial_investment" id="initial_investment_range" min="0" max="10000" step="100" value="0">
+    <div class="break"></div>
+    <label for="monthly_investment_num">
+      Save per month
+      <br>
+      <small>(After stopped saving)</small>
+    </label>
+    <input type="number" data-parse="int" name="monthly_investment" id="monthly_investment_num" min="0" max="" step="1" value="0">
+    <input type="range" data-parse="int" name="monthly_investment" id="monthly_investment_range" min="0" max="1000" step="10" value="0">
+    <div class="break"></div>
+    <label for="monthly_expense_num">Use per month</label>
+    <input type="number" data-parse="int" name="monthly_expense" id="monthly_expense_num" min="0" max="" step="1" value="0">
+    <input type="range" data-parse="int" name="monthly_expense" id="monthly_expense_range" min="0" max="5000" step="100" value="0">
+  </div>
+
+  <div class="space-3"></div>
+
+  <div class="controls">
+    <label for="start_year_num">Start saving at age</label>
+    <input type="number" data-parse="int" name="start_year" id="start_year_num" min="0" max="120" step="1" value="0">
+    <input type="range" data-parse="int" name="start_year" id="start_year_range" min="0" max="60" step="1" value="0">
+    <div class="break"></div>
+    <label for="end_year_num">Stop saving at age</label>
+    <input type="number" data-parse="int" name="end_year" id="end_year_num" min="0" max="120" step="1" value="0">
+    <input type="range" data-parse="int" name="end_year" id="end_range_num" min="25" max="80" step="1" value="0">
+  </div>
+
+  <div class="space-3"></div>
+
+  <div class="controls">
+    <label for="interest_rate_num">Growth per year (%)</label>
+    <input type="number" data-parse="float" name="interest_rate" id="interest_rate_num" min="0" max="100" step="0.01" value="0">
+    <input type="range" data-parse="float" name="interest_rate" id="interest_rate_range" min="0" max="10" step="0.1" value="0">
+    <div class="break"></div>
+    <label for="total_expense_ratio_num">
+      Yearly expenses (%)
+      <br>
+      (<a href="http://www.investopedia.com/terms/t/ter.asp">Total Expense Ratio</a>)
+    </label>
+    <input type="number" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_num" min="0" max="30" step="0.01" value="0">
+    <input type="range" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_range" min="0" max="6" step="0.01" value="0">
+  </div>
+
+  <p id="rtrl-footer">
+    Created by Ville Vanninen / <a href="https://twitter.com/sakamies">@sakamies</a>.
+    <br>
+    Please <a href="https://twitter.com/sakamies">tweet</a> or <a href="mailto:ville@pumpula.net">email</a> any suggestion for improvement. 🤗
+    <br>
+    Check out pumpula.net <a href="https://pumpula.net">pumpula.net</a> for more stuff.
+  </p>
+
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/calc.js"></script>
+  <script src="scripts/graph.js"></script>
+  <script src="scripts/main.js"></script>
+</div>

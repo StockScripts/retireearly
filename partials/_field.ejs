@@ -1,0 +1,8 @@
+<div class="field number">
+  <label for="<%= name %>"><%= label %></label>
+  <input type="number" name="<%= name %>" id="<%= name %>_num" min="<%= min %>" max="<%= max %>" step="<%= step %>" value="<%= value %>">
+  <!-- <input type="range" name="<%= name %>" id="<%= name %>_range" min="<%= min %>" max="<%= max %>" step="<%= step %>" value="<%= value %>"> -->
+  <% if (help) { -%>
+    <small class="help"><%= help %></small>
+  <% } -%>
+</div>

@@ -1,0 +1,20 @@
+{
+  "name": "retireearly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pingy dev",
+    "export": "pingy export"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@pingy/cli": "^0.6.6",
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "ejs": "^2.5.6",
+    "node-sass": "^4.5.3"
+  }
+}

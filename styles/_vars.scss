@@ -1,0 +1,27 @@
+@function black($opacity: 1) {
+  @return rgba(0,0,0,$opacity);
+}
+@function white($opacity: 1) {
+  @return rgba(255,255,255,$opacity);
+}
+@function gray($amount, $opacity: 1) {
+  @return rgba($amount, $amount, $amount, $opacity);
+}
+@function opacity($color, $opacity: 1) {
+  @return rgba($color, $opacity);
+}
+
+$font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+$root-size: 16px;
+$font-bigger: 1.2777778rem;
+$font-size: 1rem;
+$font-small: 0.8888888889rem;
+$font-tiny: 0.7777777778rem;
+$line: 0.333333333333rem;
+
+$dark: #333;
+$blue: hsl(200, 50%, 50%);
+$brand: $blue;

@@ -1,0 +1,70 @@
+@mixin range-track {
+  -webkit-appearance: none;
+  height: 4px;
+  margin: 13px 0 13px 0;
+  color: transparent;
+  background: $blue;
+  border-radius: 999px;
+  border: none;
+}
+@mixin range-thumb {
+  -webkit-appearance: none;
+  box-shadow: 0px 0px 0px transparent;
+  height: 30px;
+  width: 30px;
+  margin-top: -13px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 2px 12px 0px black(.5), 0px 1px 3px 0px black(.1);
+  border: 3px solid white;
+  background-color: $blue;
+}
+
+
+#rtrl-widget {
+
+  input[type=range] {
+    -webkit-appearance: none;
+    display: block;
+    margin: 0;
+    border: none;
+    background: transparent;
+  }
+  input[type=range]:focus {
+    //outline: none;
+  }
+
+
+  input[type=range]::-webkit-slider-runnable-track {
+    @include range-track();
+  }
+  input[type=range]::-moz-range-track {
+    @include range-track();
+  }
+  input[type=range]::-ms-track {
+    @include range-track();
+  }
+  input[type=range]::-ms-fill-lower {
+    //@include range-track();
+    display: none;
+  }
+  input[type=range]::-ms-fill-upper {
+    //@include range-track();
+    display: none;
+  }
+
+
+  input[type=range]::-webkit-slider-thumb {
+    @include range-thumb();
+  }
+  input[type=range]::-moz-range-thumb {
+    @include range-thumb();
+  }
+  input[type=range]::-ms-thumb {
+    @include range-thumb();
+  }
+
+}
+
+
+//TODO: focus style for thumbs
