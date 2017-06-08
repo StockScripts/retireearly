@@ -20,15 +20,18 @@ const graphSvg = dom('#graph-svg')[0]
 let data = calcData(opts)
 
 const main = e => {
-  //sanitizeInputs(e.target)
-  syncInputs(e.target)
-  Object.assign(opts, getOpt(e.target))
+  if (e) {
+    //sanitizeInputs(e.target)
+    syncInputs(e.target)
+    Object.assign(opts, getOpt(e.target))
+  }
   data = calcData(opts)
   drawGraph(data, graphSvg, opts)
+  setLabels(data, opts)
 }
 
 document.addEventListener('input', main)
 document.addEventListener('change', main)
+main()
 
 
-drawGraph(data, graphSvg, opts)

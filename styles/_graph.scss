@@ -5,16 +5,21 @@
   font-weight: normal;
   position: sticky;
   position: -webkit-sticky;
-  top: 1.5em;
+  top: 0;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 2em auto;
+  padding: 1em 1em 2em 1em;
   color: $brand;
   background: white;
-  border-bottom: 3px solid $blue;
 
   @media (max-width: 1200px) {
     top: 0;
+  }
+  @media (max-width: 800px) {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
   @media (max-width: 600px) {
     font-size: 11px;
@@ -73,21 +78,42 @@
   .xaxis {
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
     top: 0;
     height: 100%;
     width: 100%;
   }
-  .xaxis span {
+  .x-area {
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 0 .2em .2em 0;
   }
-  .x-1 { background: mix($blue, transparent, 10); }
-  .x-2 { background: mix($blue, transparent, 20); }
-  .x-3 { background: mix($blue, transparent, 30); }
-  .x-4 { background: mix($blue, transparent, 40); }
+  .x-area span {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 1.75em;
+    width: 0px;
+    line-height: 1.75em;
+  }
+  .start_year {
+    background: mix($blue, transparent, 10);
+  }
+  .start_year.at-limit span {
+    justify-content: flex-start;
+  }
+  .end_year {
+    background: mix($blue, transparent, 20);
+  }
+  .done_year {
+    background: mix($blue, transparent, 30);
+  }
+  .done_year.at-limit span {
+    justify-content: flex-end;
+  }
+  .over_year {
+    background: mix($blue, transparent, 40);
+  }
+  .over_year { flex: 1 0 auto; }
 
 }
