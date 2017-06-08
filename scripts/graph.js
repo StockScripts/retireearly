@@ -15,10 +15,8 @@ const drawGraph = (data, svg, opts) => {
 
   //Scale years & values to match svg viewbox
   let points = data.map(point => {
-    const year = point.year / 120 * xrange
-    //Scale y values from 0..max to 0..yrange so the svg doesn't do any funky scaling on its own
-    const value = point.value / 1000000 * yrange
-    //TODO: that `- 10` should be based on the scale of max value somehow, it's a percentage of how much from the top do we bring down the tip of the sharks fin. Should be based on how big the value at the top of the graph is. Probably logarithmically, so with small values you get a decent looking graph, but as you approach a million or so, the graph stops climbing.
+    const year = point.year / 120 * xrange //Years are from 0..120
+    const value = point.value / 1000000 * yrange //Values may go as high as the sky, but one million is the limit now.
     return {year, value}
   })
 

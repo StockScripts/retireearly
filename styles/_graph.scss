@@ -12,9 +12,12 @@
   padding: 1em 1em 2em 1em;
   color: $brand;
   background: white;
+  border-radius: 2px;
+  border: 2px solid mix($brand, transparent, 60);
 
-  @media (max-width: 1200px) {
-    top: 0;
+  @media (max-width: 1300px) {
+    border-radius: 0;
+    border-width: 0 0 2px 0;
   }
   @media (max-width: 800px) {
     padding-top: 0;
@@ -92,9 +95,9 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 1.75em;
+    top: 2em;
     width: 0px;
-    line-height: 1.75em;
+    line-height: 2em;
   }
   .start_year {
     background: mix($blue, transparent, 10);
