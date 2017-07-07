@@ -5,24 +5,17 @@
   font-weight: normal;
   position: sticky;
   position: -webkit-sticky;
-  top: 0;
+  top: -1px;
   width: 100%;
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 0 auto 2em auto;
-  padding: 1em 1em 2em 1em;
+  padding: 0 0 0 0;
   color: $brand;
   background: white;
-  border-radius: 2px;
-  border: 2px solid mix($brand, transparent, 60);
 
   @media (max-width: 1300px) {
-    border-radius: 0;
-    border-width: 0 0 2px 0;
   }
   @media (max-width: 800px) {
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
   @media (max-width: 600px) {
     font-size: 11px;
@@ -95,7 +88,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 2em;
+    bottom: 0;
     width: 0px;
     line-height: 2em;
   }

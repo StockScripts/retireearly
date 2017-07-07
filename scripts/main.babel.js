@@ -3,7 +3,7 @@ const opts = {
   end_year: 60,
   initial_investment: 0,
   monthly_investment: 500,
-  monthly_expense: 2200,
+  monthly_usage: 2200,
   entry_charge: 0,
   interest_rate: 5.6,
   total_expense_ratio: 0.5,
