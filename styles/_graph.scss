@@ -1,115 +1,90 @@
-#rtrl-graph {
-
-  font-family: $font-family;
-  font-size: 14px;
-  font-weight: normal;
-  position: sticky;
-  position: -webkit-sticky;
-  top: -1px;
-  width: 100%;
-  // max-width: 1200px;
-  margin: 0 auto 2em auto;
-  padding: 0 0 0 0;
-  color: $brand;
-  background: white;
-
-  @media (max-width: 1300px) {
-  }
-  @media (max-width: 800px) {
-  }
-  @media (max-width: 600px) {
-    font-size: 11px;
-  }
-
-  #graph-aspect {
-    position: relative;
-    padding-top: 33%;
-  }
-  svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-  .plot {
-    stroke-width: 3;
-    stroke: $brand;
-    fill: none;
-  }
-  .xaxis,
-  .yaxis {
-    position: absolute;
-    left: 0;
-    mix-blend-mode: multiply;
-  }
-  .yaxis {
-    top: 0;
-    height: 100%;
-    width: 100%;
-  }
-  .yaxis span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: .8em;
-    border-bottom: 1px solid mix($blue, transparent, 20);
-  }
-  .y-3 {
-    bottom: 90%;
-    border-bottom: none;
-  }
-  .y-2 {
-    position: absolute;
-    bottom: 50%;
-  }
-  .y-1 {
-    position: absolute;
-    bottom: 10%;
-  }
-  .xaxis {
-    display: flex;
-    align-items: stretch;
-    top: 0;
-    height: 100%;
-    width: 100%;
-  }
-  .x-area {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-  .x-area span {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    bottom: 0;
-    width: 0px;
-    line-height: 2em;
-  }
-  .start_year {
-    background: mix($blue, transparent, 10);
-  }
-  .start_year.at-limit span {
-    justify-content: flex-start;
-  }
-  .end_year {
-    background: mix($blue, transparent, 20);
-  }
-  .done_year {
-    background: mix($blue, transparent, 30);
-  }
-  .done_year.at-limit span {
-    justify-content: flex-end;
-  }
-  .over_year {
-    background: mix($blue, transparent, 40);
-  }
-  .over_year { flex: 1 0 auto; }
-
+.graph {
+  font-size: 11px;
+  position: relative;
 }
+.graph svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.plot {
+  stroke-width: 3;
+  stroke: currentColor;
+  fill: none;
+}
+.xaxis,
+.yaxis {
+  position: absolute;
+  left: 0;
+}
+.yaxis {
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.yaxis .line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: .8em;
+  // border-bottom: 1px solid mix(white, transparent, 20);
+}
+.y-3 {
+  bottom: 90%;
+  border-bottom: none;
+}
+.y-2 {
+  position: absolute;
+  bottom: 50%;
+}
+.y-1 {
+  position: absolute;
+  bottom: 10%;
+}
+.xaxis {
+  display: flex;
+  align-items: stretch;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.x-area {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.x-area span {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  width: 0px;
+  line-height: 2em;
+}
+.start_year {
+  background: mix($blue, transparent, 10);
+}
+.start_year.at-limit span {
+  justify-content: flex-start;
+}
+.end_year {
+  background: mix($blue, transparent, 20);
+}
+.done_year {
+  background: mix($blue, transparent, 30);
+}
+.done_year.at-limit span {
+  justify-content: flex-end;
+}
+.over_year {
+  background: mix($blue, transparent, 40);
+}
+.over_year { flex: 1 0 auto; }
+

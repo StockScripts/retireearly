@@ -13,6 +13,8 @@ function calcData (opts) {
     }
   ]
 
+  //TODO: calculate monthly profit and calculate based on that, using only yearly profit probably results in low estimates
+
   for (let year = opts.start_year + 1; year < 121; year++ ) {
 
     if (year >= opts.start_year && year <= opts.end_year) {

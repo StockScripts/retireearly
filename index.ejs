@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Retire early?</title>
-    <meta name="description" content="Savings & investment calculator for your future.">
-    <meta name="viewport" content="width=device-width">
-    <%- include('partials/_some') %>
-    <link rel="stylesheet" href="styles/theme.css">
+    <%- include('partials/_head') %>
   </head>
-  <body id="rtrl">
-    <nav>
-      <a href="index-fi.html" class="">Suomeksi</a>
-      |
-      <a href="index.html">English</a>
-    </nav>
-    <header class="header">
-      <h1>When should I start saving?</h1>
-      <p>
-        You should start right now or yesterday, even with a small amount. You can use this graph to estimate how your savings or investments would grow and last with the values you choose.
-      </p>
-      <p>
-        <small>The default values are estimated based on Finnish Euros. If the values of the range sliders don't make sense for your local currency, you can put bigger and more precice values in the number input boxes.</small>
-      </p>
-    </header>
-    <%- include('widget') %>
+  <body>
+    <div class="layout">
+      <%- include('partials/_graph') %>
+      <%- include('partials/_controls') %>
+    </div>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/calc.js"></script>
+    <script src="scripts/graph.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <!--
+    TODO:
+    - Add share button!
+    - Add a description to the graph that tells you how much you'll have at best and for how long will the money last. Should maybe be a polite live aria region? Should have a debounce for applying changes.
+    -->
+
   </body>
 </html>

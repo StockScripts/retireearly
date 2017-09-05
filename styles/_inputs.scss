@@ -1,0 +1,20 @@
+input[type=number] {
+  -webkit-appearance: none;
+  font: inherit;
+  line-height: 1;
+  height: 1em;
+  text-align: right;
+  border: 1px solid black(.2);
+  color: inherit;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 3px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}

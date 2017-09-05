@@ -10,25 +10,37 @@ const opts = {
   exit_charge: 0
 }
 
-//Set inputs to match initial opts
+
+//Set inputs to match opts
 for (let key in opts) {
-  dom(`[name="${key}"]`).forEach(el => el.value = opts[key])
+  const opt = opts[key]
+  //TODO: Read opt from localStorage and merge to opts
+  dom(`[name="${key}"]`).forEach(el => el.value = opt)
 }
 
+
 const graphSvg = dom('#graph-svg')[0]
-//const opts = Object.assign(defaults, getOpts(document))
-let data = calcData(opts)
 
 const main = e => {
   if (e) {
-    //sanitizeInputs(e.target)
+    const opt = getOpt(e.target)
     syncInputs(e.target)
-    Object.assign(opts, getOpt(e.target))
+    Object.assign(opts, opt)
+    //TODO: Save opt to localStorage
   }
-  data = calcData(opts)
+  const data = calcData(opts)
   drawGraph(data, graphSvg, opts)
   setLabels(data, opts)
 }
+
+
+//TODO: some way to reset localStorage
+const reset = () => {
+  for (let key in opts) {
+    //Remove from localStorage
+  }
+}
+
 
 document.addEventListener('input', main)
 document.addEventListener('change', main)

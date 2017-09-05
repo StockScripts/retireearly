@@ -1,0 +1,9 @@
+[hidden],
+.hide {
+  display: none !important;
+  visibility: hidden !important; //http://www.456bereastreet.com/archive/200711/screen_readers_sometimes_ignore_displaynone/
+}
+
+.break {
+  flex: 0 0 100%;
+}

@@ -1,0 +1,44 @@
+<form class="controls">
+
+  <label for="initial_investment_num">Already saved sum</label>
+  <input type="number" data-parse="int" name="initial_investment" id="initial_investment_num" min="0" max="" step="1" value="0">
+  <input type="range" data-parse="int" name="initial_investment" id="initial_investment_range" min="0" max="10000" step="100" value="0">
+
+
+  <label for="monthly_investment_num">Save per month</label>
+  <input type="number" data-parse="int" name="monthly_investment" id="monthly_investment_num" min="0" max="" step="1" value="0">
+  <input type="range" data-parse="int" name="monthly_investment" id="monthly_investment_range" min="0" max="1000" step="10" value="0">
+
+  <!--
+    TODO: remove "use per month" and use the assumption that you can safely spend about 4% of your savings and show how much you could safely spend after you've stopped saving.
+  <label for="monthly_usage_num">
+    Use per month
+  </label>
+  <input type="number" data-parse="int" name="monthly_usage" id="monthly_usage_num" min="0" max="" step="1" value="0">
+  <input type="range" data-parse="int" name="monthly_usage" id="monthly_usage_range" min="0" max="5000" step="100" value="0">
+  -->
+
+  <label for="start_year_num">Start saving at age</label>
+  <input type="number" data-parse="int" name="start_year" id="start_year_num" min="0" max="120" step="1" value="0">
+  <input type="range" data-parse="int" name="start_year" id="start_year_range" min="0" max="60" step="1" value="0">
+
+
+  <label for="end_year_num">Stop saving at age</label>
+  <input type="number" data-parse="int" name="end_year" id="end_year_num" min="0" max="120" step="1" value="0">
+  <input type="range" data-parse="int" name="end_year" id="end_range_num" min="25" max="80" step="1" value="0">
+
+
+  <label for="interest_rate_num">Growth per year</label>
+  <input type="number" data-parse="float" name="interest_rate" id="interest_rate_num" min="0" max="100" step="0.01" value="0" aria-describedby="interest_rate_num_unit">
+  <span class="unit" id="interest_rate_num_unit">%</span>
+  <input type="range" data-parse="float" name="interest_rate" id="interest_rate_range" min="0" max="10" step="0.1" value="0">
+
+
+  <label for="total_expense_ratio_num">
+    Total Expense Ratio
+  </label>
+  <input type="number" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_num" min="0" max="30" step="0.01" value="0" aria-describedby="total_expense_ratio_unit">
+  <span class="unit" id="total_expense_ratio_unit">%</span>
+  <input type="range" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_range" min="0" max="6" step="0.01" value="0">
+
+</form>
