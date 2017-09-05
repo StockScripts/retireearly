@@ -1,3 +1,6 @@
+
+
+//Defaults
 const opts = {
   start_year: 30,
   end_year: 60,
@@ -11,22 +14,26 @@ const opts = {
 }
 
 
+//Cache graph node
+const graphSvg = dom('#graph-svg')[0]
+
+
+//Get opts from localStorage, but use default if not set
 //Set inputs to match opts
 for (let key in opts) {
-  const opt = opts[key]
-  //TODO: Read opt from localStorage and merge to opts
-  dom(`[name="${key}"]`).forEach(el => el.value = opt)
+  opts[key] = localStorage.getItem(key) || opts[key]
+  dom(`[name="${key}"]`).forEach(el => el.value = opts[key])
 }
 
 
-const graphSvg = dom('#graph-svg')[0]
 
 const main = e => {
   if (e) {
+    const name = e.target.name
     const opt = getOpt(e.target)
     syncInputs(e.target)
-    Object.assign(opts, opt)
-    //TODO: Save opt to localStorage
+    Object.assign(opts, opt) //Update opts
+    localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
   }
   const data = calcData(opts)
   drawGraph(data, graphSvg, opts)
@@ -37,8 +44,9 @@ const main = e => {
 //TODO: some way to reset localStorage
 const reset = () => {
   for (let key in opts) {
-    //Remove from localStorage
+    localStorage.removeItem(key)
   }
+  window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
 }
 
 

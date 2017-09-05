@@ -24,11 +24,13 @@ const getOpt = input => {
   return {[input.name]: value}
 }
 
-const getOpts = el => {
-  let opts = {}
-  dom('input').forEach(input => Object.assign(opts, getOpt(input)))
-  return opts
-}
+
+//In case we want to read opts from the dom instead of providing defaults, not used and probably should not be used
+// const getOpts = el => {
+//   let opts = {}
+//   dom('input').forEach(input => Object.assign(opts, getOpt(input)))
+//   return opts
+// }
 
 
 
