@@ -1,8 +1,8 @@
 input[type=number] {
   -webkit-appearance: none;
   font: inherit;
-  line-height: 1;
-  height: 1em;
+  line-height: inherit;
+  height: auto;
   text-align: right;
   border: 1px solid black(.2);
   color: inherit;
@@ -17,4 +17,17 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+}
+
+button,
+.button {
+  line-height: 1;
+  display: inline-block;
+  max-width: 100%;
+  text-transform: uppercase;
+  color: currentColor;
+  background: white(0);
+  border: 2px solid white;
+  padding: .8rem 2rem;
+  border-radius: 50rem;
 }

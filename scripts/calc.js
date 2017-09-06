@@ -3,13 +3,15 @@ function calcData (opts) {
   const yearly_investment = opts.monthly_investment * 12
   const yearly_usage = opts.monthly_usage * 12
   let value = opts.initial_investment
+  let input = opts.initial_investment
 
   //TODO: clone opts and return data as something like data.plot, data.opts and so on, so the calculator returns the data and the options that generated that data, so after calculating there doesn't need to be any references to any old stuff, just the data
 
   let data = [
     {
       year: opts.start_year,
-      value: value
+      value: value,
+      input: input
     }
   ]
 
@@ -19,6 +21,7 @@ function calcData (opts) {
 
     if (year >= opts.start_year && year <= opts.end_year) {
       //add yearly investments minus entry charge
+      input = input + yearly_investment
       value = value + yearly_investment * (1 - opts.entry_charge / 100)
     }
 

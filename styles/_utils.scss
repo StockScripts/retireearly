@@ -1,3 +1,7 @@
+.text-center {
+  text-align: center;
+}
+
 [hidden],
 .hide {
   display: none !important;
@@ -5,5 +9,11 @@
 }
 
 .break {
-  flex: 0 0 100%;
+  flex-basis: 100% !important;
 }
+
+
+.line {
+  border: 1px solid white(.5);
+}
+.space {width: 1rem; height: 1rem;}

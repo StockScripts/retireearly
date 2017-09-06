@@ -1,4 +1,5 @@
 const dom = q => [...document.querySelectorAll(q)]
+const domOne = q => document.querySelector(q)
 
 
 //http://www.jacklmoore.com/notes/rounding-in-javascript/
@@ -41,31 +42,29 @@ const syncInputs = el => {
       if (target !== el) {
         target.value = el.value
       }
+      if (target.type === 'number') {
+        autosize(target)
+      }
     })
   }
 }
 
 
+const autosize = (el) => {
+  const style = window.getComputedStyle(el)
+  const measure = document.createElement('span')
 
+  //Just measuring what I'm using in css, this is not a generic method
+  measure.style.visibility = 'hidden'
+  measure.style.position = 'absolute'
+  measure.style.fontSize = style.getPropertyValue('font-size')
+  measure.style.fontWeight = style.getPropertyValue('font-weight')
+  measure.style.letterSpacing = style.getPropertyValue('letter-spacing')
+  measure.innerText = el.value
 
-//Keeps start_year below end_year and end_year above start_year, not used, let the user crap out the values if they want, the graph will show nothing as it should if start is after end.
-// const sanitizeInputs = el => {
-//   if (el.name === 'start_year') {
-//     dom('[name="end_year"]').forEach(target => {
-//       const max = parseInt(el.max)
-//       const val = parseInt(el.value)
-//       const min = Math.min(val + 1, max)
-//       const tgv = parseInt(target.value)
-//       target.value = Math.max(min, tgv)
-//     })
-//   }
-//   if (el.name === 'end_year') {
-//     dom('[name="start_year"]').forEach(target => {
-//       const min = parseInt(el.min)
-//       const val = parseInt(el.value)
-//       const max = Math.max(val - 1, min)
-//       const tgv = parseInt(target.value)
-//       target.value = Math.min(max, tgv)
-//     })
-//   }
-// }
+  document.body.appendChild(measure)
+  const width = measure.clientWidth + 2
+  measure.remove()
+
+  el.style.width = width + 'px'
+}

@@ -29,6 +29,7 @@ const drawGraph = (data, svg, opts) => {
 
 
 const setLabels = (data, opts) => {
+  // console.log('setLabels()', data, opts)
 
   zeroToStart = opts.start_year / 1.2
   startToEnd = (opts.end_year - opts.start_year) / 1.2

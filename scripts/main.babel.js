@@ -1,7 +1,7 @@
 
 
 //Defaults
-const opts = {
+const defaults = {
   start_year: 30,
   end_year: 60,
   initial_investment: 0,
@@ -12,18 +12,13 @@ const opts = {
   total_expense_ratio: 0.5,
   exit_charge: 0
 }
+const opts = {}
 
 
-//Cache graph node
+//Cache nodes
 const graphSvg = dom('#graph-svg')[0]
-
-
-//Get opts from localStorage, but use default if not set
-//Set inputs to match opts
-for (let key in opts) {
-  opts[key] = localStorage.getItem(key) || opts[key]
-  dom(`[name="${key}"]`).forEach(el => el.value = opts[key])
-}
+const numberInputs = dom('[type=number]')
+const rangeInputs = dom('[type=range]')
 
 
 
@@ -41,17 +36,37 @@ const main = e => {
 }
 
 
-//TODO: some way to reset localStorage
-const reset = () => {
-  for (let key in opts) {
-    localStorage.removeItem(key)
+
+const init = () => {
+  for (let key in defaults) {
+    //Get opts from localStorage, but use default if not set
+    opts[key] = parseFloat(localStorage.getItem(key)) || defaults[key]
+    dom(`[name="${key}"]`).forEach(el => {
+      el.value = opts[key] //Set inputs to match opts
+      if (el.type === 'number') {
+        autosize(el)
+      }
+    })
   }
-  window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
+
+  document.addEventListener('input', main)
+  document.addEventListener('change', main)
+  document.addEventListener('resize', () => numberInputs.forEach(el => autosize(el)))
+  main()
+
+  domOne('#reset').addEventListener('click', reset)
 }
 
 
-document.addEventListener('input', main)
-document.addEventListener('change', main)
-main()
+
+const reset = (e) => {
+  if (e) e.preventDefault()
+  for (let key in opts) localStorage.removeItem(key)
+  //window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
+  init()
+}
+
+
+init()
 
 
