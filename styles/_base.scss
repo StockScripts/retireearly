@@ -1,21 +1,16 @@
-@import "vars";
-
 *, *::before, *::after {
   font: inherit;
   margin: 0;
   padding: 0;
+  max-width: 100%;
   color: currentColor;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-family: Futura PT;
+  font-family: 'Futura PT Multilingual W01', Futura PT;
+  font-weight: 400;
   font-size: 1rem;
   line-height: 1.5rem;
   color: white;

@@ -1,6 +1,5 @@
 .graph {
   font-size: 11px;
-  position: relative;
 }
 .graph svg {
   position: absolute;
@@ -9,12 +8,29 @@
   top: 0;
   left: 0;
 }
-.plot {
+.graph polyline {
+  stroke-linecap: round;
+}
+.graph .savings {
   stroke-width: 3;
-  stroke: currentColor;
+  stroke: white(.2);
   fill: none;
 }
-.xaxis,
+.graph .profit {
+  stroke-width: 3;
+  stroke: white(1);
+  fill: none;
+}
+.graph .usage {
+  stroke-width: 3;
+  stroke: white(.5);
+  fill: none;
+  stroke-dasharray: 5;
+}
+
+
+
+
 .yaxis {
   position: absolute;
   left: 0;
@@ -36,8 +52,8 @@
   // border-bottom: 1px solid mix(white, transparent, 20);
 }
 .y-3 {
+  position: absolute;
   bottom: 90%;
-  border-bottom: none;
 }
 .y-2 {
   position: absolute;
@@ -47,7 +63,11 @@
   position: absolute;
   bottom: 10%;
 }
+
+
 .xaxis {
+  position: absolute;
+  left: 0;
   display: flex;
   align-items: stretch;
   top: 0;
@@ -71,16 +91,18 @@
 .start_year {
   background: mix($blue, transparent, 10);
 }
-.start_year.at-limit span {
+.start_year.near-start span {
   justify-content: flex-start;
 }
 .end_year {
   background: mix($blue, transparent, 20);
+  border-right: 3px solid white(.1);
+  margin-left: 1px; //Center the border on the intersection point of savings & usage
 }
 .done_year {
   background: mix($blue, transparent, 30);
 }
-.done_year.at-limit span {
+.done_year.near-end span {
   justify-content: flex-end;
 }
 .over_year {

@@ -51,6 +51,7 @@ const syncInputs = el => {
 
 
 const autosize = (el) => {
+  console.error('init input autosize not worka on safari? :(', el)
   const style = window.getComputedStyle(el)
   const measure = document.createElement('span')
 

@@ -37,7 +37,7 @@ function calcData (opts) {
     value = value * (1 - opts.total_expense_ratio / 100)
 
     if (year >= opts.start_year) {
-      data = [...data, {year, value}]
+      data = [...data, {year, value, input}]
     }
     if (year > opts.end_year && value < 0) {
       return data
