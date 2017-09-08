@@ -8,8 +8,6 @@ function round (value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals);
 }
 
-const currency = (value, decimals) => round(value, decimals)
-
 
 const getOpt = input => {
   let value
@@ -43,21 +41,25 @@ const syncInputs = el => {
         target.value = el.value
       }
       if (target.type === 'number') {
-        autosize(target)
+        autowidth(target)
       }
     })
   }
 }
 
 
-const autosize = (el) => {
-  console.error('init input autosize not worka on safari? :(', el)
+
+
+const autowidth = (el) => {
+  el.classList.add('autowidth')
+
   const style = window.getComputedStyle(el)
   const measure = document.createElement('span')
 
   //Just measuring what I'm using in css, this is not a generic method
-  measure.style.visibility = 'hidden'
+  // measure.style.visibility = 'hidden'
   measure.style.position = 'absolute'
+  measure.style.display = 'block'
   measure.style.fontSize = style.getPropertyValue('font-size')
   measure.style.fontWeight = style.getPropertyValue('font-weight')
   measure.style.letterSpacing = style.getPropertyValue('letter-spacing')

@@ -1,6 +1,3 @@
-.graph {
-  font-size: 11px;
-}
 .graph svg {
   position: absolute;
   width: 100%;
@@ -10,37 +7,33 @@
 }
 .graph polyline {
   stroke-linecap: round;
+  stroke-width: 5;
+  stroke: white;
+  fill: none;
 }
 .graph .savings {
-  stroke-width: 3;
   stroke: white(.2);
-  fill: none;
 }
 .graph .profit {
-  stroke-width: 3;
   stroke: white(1);
-  fill: none;
 }
 .graph .usage {
-  stroke-width: 3;
   stroke: white(.5);
-  fill: none;
-  stroke-dasharray: 5;
+  stroke-dasharray: 10 20;
 }
 
 
 
 
-.yaxis {
+.y-axis {
+  font-size: 12px;
   position: absolute;
-  left: 0;
-}
-.yaxis {
+  left: .5rem;
   top: 0;
   height: 100%;
   width: 100%;
 }
-.yaxis .line {
+.y-axis .line {
   position: absolute;
   left: 0;
   width: 100%;
@@ -65,48 +58,46 @@
 }
 
 
-.xaxis {
+.x-axis {
+  font-size: 1rem;
   position: absolute;
   left: 0;
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   top: 0;
   height: 100%;
   width: 100%;
 }
 .x-area {
-  display: flex;
+  line-height: 1;
+  white-space: nowrap;
   flex: 0 0 auto;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-.x-area span {
   display: flex;
-  justify-content: center;
-  position: relative;
-  bottom: 0;
-  width: 0px;
-  line-height: 2em;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-content: flex-end;
+  padding: 3rem 0 .5rem 0;
+}
+.x-area .big {
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 .start_year {
-  background: mix($blue, transparent, 10);
 }
-.start_year.near-start span {
+.start_year.near-start {
   justify-content: flex-start;
 }
 .end_year {
-  background: mix($blue, transparent, 20);
-  border-right: 3px solid white(.1);
-  margin-left: 1px; //Center the border on the intersection point of savings & usage
+  align-self: flex-start;
+  align-content: flex-end;
 }
 .done_year {
-  background: mix($blue, transparent, 30);
 }
-.done_year.near-end span {
+.done_year.near-end {
   justify-content: flex-end;
 }
 .over_year {
-  background: mix($blue, transparent, 40);
+  flex: 1 0 auto; //Other areas get explicit width, this one fills what's left
 }
-.over_year { flex: 1 0 auto; }
 

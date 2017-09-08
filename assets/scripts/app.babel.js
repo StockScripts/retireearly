@@ -6,9 +6,10 @@ domready(() => {
     end_year: 60,
     initial_investment: 0,
     monthly_investment: 500,
+    max_visible_sum: 1000000,
     monthly_usage: 2200,
     entry_charge: 0,
-    interest_rate: 5.6,
+    interest_rate: 7,
     total_expense_ratio: 0.5,
     exit_charge: 0
   }
@@ -41,27 +42,26 @@ domready(() => {
   const init = () => {
 
     for (let key in defaults) {
-
       //Get opts from localStorage, but use default if not set
       opts[key] = parseFloat(localStorage.getItem(key)) || defaults[key]
 
       //Set inputs to match opts
       dom(`[name="${key}"]`).forEach(el => {
         el.value = opts[key]
-        if (el.type === 'number') autosize(el)
       })
-
     }
 
     document.addEventListener('input', main)
     document.addEventListener('change', main)
-    window.addEventListener('resize', () => requestAnimationFrame(() => {
-      numberInputs.forEach(el => autosize(el))
-      drawGraph(data, graphSvg, opts)
-    }))
     domOne('#reset').addEventListener('click', reset)
 
-    numberInputs.forEach(el => autosize(el))
+    window.addEventListener('load', () => numberInputs.forEach(el => autowidth(el)))
+    window.addEventListener('resize', () => requestAnimationFrame(() => {
+      numberInputs.forEach(el => autowidth(el))
+      drawGraph(data, graphSvg, opts)
+    }))
+
+
     main()
   }
 
