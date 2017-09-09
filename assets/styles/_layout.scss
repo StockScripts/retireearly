@@ -9,7 +9,6 @@ html, body {
   flex-wrap: wrap;
   align-items: stretch;
   min-height: 100%;
-  // grid-template-columns: minmax(50%, 1fr) minmax(300px, 500px);
 }
 
 .graph {
@@ -33,41 +32,22 @@ html, body {
 }
 
 .controls {
-  display: flex;
-  flex: 1 0 400px;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 1rem 2rem;
+  max-width: 100%;
 }
 
-.control {
-  text-align: center;
-  margin: 1rem 0;
-}
-.control > * {
-  display: inline-block;
-  vertical-align: baseline;
-}
-.controls [type=number] {
-  font-size: 2rem;
-  line-height: 2rem;
-  height: 2rem;
-  letter-spacing: -1px;
-}
-.control .unit {
-  font-size: 2rem;
-}
-.controls [type=range] {
-  display: block;
-  width: 100%;
-}
-@media (max-width: 350px) {
-  .control label,
-  .control .desc {
+@media (max-width: 1000px) {
+  .layout {
     display: block;
-    margin: 0 auto;
+    padding-top: 20vh;
   }
-  .controls [type=range] {
-    margin-top: .5rem;
+  .graph {
+    position: fixed;
+    top: 0;
+    height: 20vh;
+    width: 100%;
+    min-height: 0;
+    z-index: 999;
+    background: $blue;
+    box-shadow: 0 0 2rem 1rem $blue;
   }
 }

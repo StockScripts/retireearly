@@ -13,6 +13,9 @@ $thumb-width: 1.5rem;
   border-radius: 999px;
   border: none;
 }
+@mixin range-track-focus {
+  box-shadow: 0 0 0 2px white(.5);
+}
 @mixin range-thumb {
   -webkit-appearance: none;
   height: $thumb-height;
@@ -21,7 +24,7 @@ $thumb-width: 1.5rem;
   // border-width: 0 $thumb-width/2 $thumb-height $thumb-width/2;
   // border-color: transparent transparent white(.7) transparent;
   border: none;
-  background: white(.7);
+  background: white(1);
   box-shadow: 0 0 2rem 2px $blue;
   border-radius: 99rem;
 }
@@ -31,13 +34,17 @@ $thumb-width: 1.5rem;
 input[type=range] {
   -webkit-appearance: none;
   display: block;
+  height: $track-height;
   margin: 0;
   border: none;
   background: transparent;
+  box-shadow: none;
+  border-radius: 99rem;
   overflow: hidden;
 }
 input[type=range]:focus {
-  //outline: none;
+  outline: none;
+  box-shadow: 0 0 0 2px white(.5);
 }
 
 
@@ -49,6 +56,15 @@ input[type=range]::-moz-range-track {
 }
 input[type=range]::-ms-track {
   @include range-track();
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  @include range-track-focus();
+}
+input[type=range]:focus::-moz-range-track {
+  @include range-track-focus();
+}
+input[type=range]:focus::-ms-track {
+  @include range-track-focus();
 }
 input[type=range]::-ms-fill-lower {
   //@include range-track();

@@ -7,6 +7,9 @@ function round (value, decimals) {
   decimals = decimals === undefined ? 2 : decimals
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals);
 }
+function roundAbout (value) {
+  return Number(Math.round(value).toPrecision(4));
+}
 
 
 const getOpt = input => {
@@ -66,7 +69,7 @@ const autowidth = (el) => {
   measure.innerText = el.value
 
   document.body.appendChild(measure)
-  const width = measure.clientWidth + 2
+  const width = measure.clientWidth + 4
   measure.remove()
 
   el.style.width = width + 'px'

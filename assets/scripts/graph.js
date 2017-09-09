@@ -1,7 +1,7 @@
 const drawGraph = (data, svg, opts) => {
-  const savings = dom('.savings')[0]
-  const profit = dom('.profit')[0]
-  const usage = dom('.usage')[0]
+  const savings = svg.querySelector('.savings')
+  const profit = svg.querySelector('.profit')
+  const usage = svg.querySelector('.usage')
 
   // const maxValue = Math.max(...(data.map(point => point.value)))
   const xmin = 0

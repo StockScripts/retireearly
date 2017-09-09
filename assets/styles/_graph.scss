@@ -28,12 +28,13 @@
 .y-axis {
   font-size: 12px;
   position: absolute;
-  left: .5rem;
+  left: 0;
   top: 0;
   height: 100%;
   width: 100%;
+  padding-left: .5rem;
 }
-.y-axis .line {
+.y-axis > * {
   position: absolute;
   left: 0;
   width: 100%;
@@ -44,15 +45,15 @@
   padding-left: .8em;
   // border-bottom: 1px solid mix(white, transparent, 20);
 }
-.y-3 {
+.high_sum {
   position: absolute;
   bottom: 90%;
 }
-.y-2 {
+.mid_sum {
   position: absolute;
   bottom: 50%;
 }
-.y-1 {
+.low_sum {
   position: absolute;
   bottom: 10%;
 }
@@ -69,6 +70,7 @@
   width: 100%;
 }
 .x-area {
+  font-size: 1.25rem;
   line-height: 1;
   white-space: nowrap;
   flex: 0 0 auto;
@@ -77,27 +79,36 @@
   align-items: flex-end;
   align-content: flex-end;
   justify-content: flex-end;
-  padding: 3rem 0 .5rem 0;
+  padding: 4rem 0 .5rem 0;
+}
+.x-area .small {
+  position: relative;
+  background: $blue;
+  padding: 0 .5rem;
+  border-radius: 1rem;
 }
 .x-area .big {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 0 .5rem;
+  border-radius: 1rem;
+  background: $blue;
 }
-.start_year {
+.start_area {
 }
-.start_year.near-start {
+.start_area.near-start {
   justify-content: flex-start;
 }
-.end_year {
+.end_area {
   align-self: flex-start;
   align-content: flex-end;
 }
-.done_year {
+.done_area {
 }
-.done_year.near-end {
+.done_area.near-end {
   justify-content: flex-end;
 }
-.over_year {
+.over_area {
   flex: 1 0 auto; //Other areas get explicit width, this one fills what's left
 }
 

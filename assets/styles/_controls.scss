@@ -1,0 +1,41 @@
+.controls {
+  display: flex;
+  flex: 1 0 400px;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem 2rem;
+}
+
+.control {
+  text-align: center;
+  margin: 1rem 0;
+}
+.control > * {
+  display: inline-block;
+  vertical-align: baseline;
+}
+.control .unit {
+  font-size: 2rem;
+}
+.controls [type=range] {
+  display: block;
+  width: 100%;
+}
+@media (max-width: 350px) {
+  .control label,
+  .control .desc {
+    display: block;
+    margin: 0 auto;
+  }
+  .controls [type=range] {
+    margin-top: .5rem;
+  }
+}
+
+.text {
+  margin: 1rem 0;
+  text-align: center;
+}
+.text :last-child {
+  margin-bottom: 0;
+}

@@ -7,7 +7,7 @@ domready(() => {
     initial_investment: 0,
     monthly_investment: 500,
     max_visible_sum: 1000000,
-    monthly_usage: 2200,
+    monthly_usage: 3000,
     entry_charge: 0,
     interest_rate: 7,
     total_expense_ratio: 0.5,
@@ -61,7 +61,7 @@ domready(() => {
       drawGraph(data, graphSvg, opts)
     }))
 
-
+    numberInputs.forEach(el => autowidth(el))
     main()
   }
 
@@ -71,6 +71,7 @@ domready(() => {
     if (e) e.preventDefault()
     for (let key in opts) localStorage.removeItem(key)
     //window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
+    domOne('#start_year_num').focus()
     init()
   }
 

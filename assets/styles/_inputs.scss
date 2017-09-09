@@ -1,11 +1,17 @@
-input[type=number] {
+input {
   -webkit-appearance: none;
-  font: inherit;
-  line-height: inherit;
-  height: auto;
-  text-align: right;
-  border: 1px solid black(.2);
+
+  // font: inherit;
+  // line-height: inherit;
+  // height: auto;
+
+  font-size: 2rem;
+  line-height: 2rem;
+  letter-spacing: -1px;
+
+  text-align: center;
   color: inherit;
+  background: white(.2);
   background: transparent;
   border: none;
   box-shadow: none;
@@ -18,16 +24,26 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
+input:focus {
+  box-shadow: 0 0 0 2px white(.5);
+  outline: none;
+}
 
 button,
 .button {
+  font-weight: 600;
   line-height: 1;
   display: inline-block;
   max-width: 100%;
   text-transform: uppercase;
-  color: currentColor;
-  background: white(0);
-  border: 2px solid white;
+  color: $blue;
+  background: white(1);
   padding: .8rem 2rem;
+  border: none;
   border-radius: 50rem;
+}
+button:focus,
+.button:focus {
+  box-shadow: 0 0 0 4px white(.5);
+  outline: none;
 }
