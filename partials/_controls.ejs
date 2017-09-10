@@ -33,18 +33,18 @@
 
   <div class="control">
     <label for="interest_rate_num">I hope to get at least</label>
-    <input type="number" data-parse="float" name="interest_rate" id="interest_rate_num" min="0" max="100" step="0.01" value="0" aria-describedby="interest_rate_num_unit_1 interest_rate_num_unit">
+    <input type="number" data-parse="float" name="interest_rate" id="interest_rate_num" min="0" step="0.1" value="0" aria-describedby="interest_rate_num_unit_1 interest_rate_num_unit">
     <span class="unit" id="interest_rate_num_unit">%</span>
     <span class="desc" id="interest_rate_num_desc">annual growth</span>
-    <input type="range" data-parse="float" name="interest_rate" id="interest_rate_range" min="2" max="12" step="0.1" value="0">
+    <input type="range" data-parse="float" name="interest_rate" id="interest_rate_range" min="0" max="12" step="0.1" value="0">
   </div>
 
   <div class="control">
     <label for="total_expense_ratio_num">I could lose</label>
-    <input type="number" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_num" min="0" max="30" step="0.01" value="0" aria-describedby="total_expense_ratio_unit">
+    <input type="number" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_num" min="0" step="0.01" value="0" aria-describedby="total_expense_ratio_unit">
     <span class="unit" id="total_expense_ratio_unit">%</span>
     <span class="desc" id="total_expense_ratio_unit">growth to expenses</span>
-    <input type="range" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_range" min="0" max="5" step="0.01" value="0">
+    <input type="range" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_range" min="0" max="5" step="0.1" value="0">
   </div>
 
   <div class="control">
