@@ -18,9 +18,7 @@ html, body {
   top: 0;
   max-width: 100%;
   max-height: 100vh;
-  min-height: 16rem;
   flex: 4 0 600px;
-  // outline: 1px dashed white(.5);
 }
 .graph-inner {
   align-self: stretch;
@@ -45,8 +43,7 @@ html, body {
     top: 0;
     height: 20vh;
     width: 100%;
-    min-height: 0;
-    z-index: 999;
+    z-index: 90;
     background: $blue;
     box-shadow: 0 0 2rem 1rem $blue;
   }

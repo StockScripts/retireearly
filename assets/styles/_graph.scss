@@ -26,7 +26,6 @@
 
 
 .y-axis {
-  font-size: 12px;
   position: absolute;
   left: 0;
   top: 0;
@@ -60,7 +59,6 @@
 
 
 .x-axis {
-  font-size: 1rem;
   position: absolute;
   left: 0;
   display: flex;
@@ -101,6 +99,7 @@
 }
 .end_area {
   align-self: flex-start;
+  max-height: calc(100% - 1.5rem);
   align-content: flex-end;
 }
 .done_area {
@@ -112,3 +111,15 @@
   flex: 1 0 auto; //Other areas get explicit width, this one fills what's left
 }
 
+@media (max-width: 1000px) {
+  .x-area {
+    font-size: .9rem;
+    padding-top: 2.5rem;
+  }
+  .x-area .big {
+    font-size: 1.35rem;
+  }
+  .end_area {
+    max-height: calc(100% - 1.4rem);
+  }
+}
