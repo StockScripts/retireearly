@@ -12,8 +12,8 @@ html {
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: white;
-  background-color: $blue;
+  color: $dark;
+  background-color: $bg;
   text-size-adjust: 100%; //So mobile viewports don't apply strange auto adjustments to element font sizes
 }
 a {

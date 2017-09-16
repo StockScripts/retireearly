@@ -10,8 +10,7 @@ input {
   letter-spacing: -1px;
 
   text-align: center;
-  color: inherit;
-  background: white(.2);
+  color: $hilite;
   background: transparent;
   border: none;
   box-shadow: none;
@@ -25,7 +24,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 input:focus {
-  box-shadow: 0 0 0 2px white(.5);
+  box-shadow: 0 0 0 2px opacity($hilite, 1);
   outline: none;
 }
 
@@ -36,14 +35,14 @@ button,
   display: inline-block;
   max-width: 100%;
   text-transform: uppercase;
-  color: $blue;
-  background: white(1);
+  color: $bg;
+  background: $hilite;
   padding: .8rem 2rem;
   border: none;
   border-radius: 50rem;
 }
 button:focus,
 .button:focus {
-  box-shadow: 0 0 0 4px white(.5);
+  box-shadow: 0 0 0 4px opacity($dark, .5);
   outline: none;
 }

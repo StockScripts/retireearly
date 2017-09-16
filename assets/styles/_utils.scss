@@ -20,6 +20,6 @@
   font-size: 2rem;
 }
 .line {
-  border: 1px solid white(.5);
+  border: 1px solid opacity($dark, .5);
 }
 .space {width: 1rem; height: 1rem;}

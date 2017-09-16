@@ -22,11 +22,10 @@ html, body {
 }
 .graph-inner {
   align-self: stretch;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  width: 100%;
+  margin: 1rem;
+  box-shadow: 0 1rem 5rem -1rem mix($hilite, black, 50);
 }
 
 .controls {
@@ -44,7 +43,7 @@ html, body {
     height: 20vh;
     width: 100%;
     z-index: 90;
-    background: $blue;
-    box-shadow: 0 0 2rem 1rem $blue;
+    background: $bg;
+    box-shadow: 0 0 2rem 1rem $bg;
   }
 }

@@ -9,12 +9,12 @@ $thumb-width: 1.5rem;
   // height: $track-height;
   margin: 0 0 0 0;
   color: transparent;
-  background: white(.2);
+  background: opacity($dark, .2);
   border-radius: 999px;
   border: none;
 }
 @mixin range-track-focus {
-  box-shadow: 0 0 0 2px white(.5);
+  box-shadow: 0 0 0 2px opacity($hilite, 1);
 }
 @mixin range-thumb {
   -webkit-appearance: none;
@@ -22,10 +22,10 @@ $thumb-width: 1.5rem;
   width: $thumb-width;
   // margin-top: $track-height + 1px;
   // border-width: 0 $thumb-width/2 $thumb-height $thumb-width/2;
-  // border-color: transparent transparent white(.7) transparent;
+  // border-color: transparent transparent opacity($light, .7) transparent;
   border: none;
-  background: white(1);
-  box-shadow: 0 0 2rem 2px $blue;
+  background: opacity($hilite, 1);
+  box-shadow: 0 0 2rem 2px $bg;
   border-radius: 99rem;
 }
 
@@ -44,7 +44,7 @@ input[type=range] {
 }
 input[type=range]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px white(.5);
+  box-shadow: 0 0 0 2px opacity($hilite, 1);
 }
 
 

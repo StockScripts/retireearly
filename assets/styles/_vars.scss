@@ -11,7 +11,10 @@
   @return rgba($color, $opacity);
 }
 
-$dark: #333;
-$blue: hsl(200, 50%, 50%);
-$blue: #009EFB;
+$light: #fafafa;
+$dark: #424242;
 $blue: #1a79ca;
+
+$color: $dark;
+$bg: $light;
+$hilite: $blue;
