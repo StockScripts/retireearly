@@ -1,6 +1,6 @@
 const dom = q => [...document.querySelectorAll(q)]
 const domOne = q => document.querySelector(q)
-
+const lastItemOf = arr => arr[arr.length - 1]
 
 //http://www.jacklmoore.com/notes/rounding-in-javascript/
 function round (value, decimals) {

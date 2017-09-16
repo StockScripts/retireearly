@@ -1,43 +1,44 @@
-const setLabels = (data, opts) => {
+const setLabels = (data, nodes, opts) => {
 
-  zeroToStart = opts.start_year / 1.2 //Scale years so 120 years matches 100%
-  startToEnd = (opts.end_year - opts.start_year) / 1.2
-  endHeight = 100 - (data.find(item => item.year === opts.end_year).value / opts.max_visible_sum) * 100
-  donePoint = data[data.findIndex(item => item.value < 0) - 1] || data[data.length - 1]
-  endToStop = (donePoint.year - opts.end_year) / 1.2
+  // const lowSum = domOne('.low_sum')
+  // const midSum = domOne('.mid_sum')
+  // const highSum = domOne('.high_sum')
+  // lowSum.innerText = ''
+  // midSum.innerText = roundAbout(opts.max_sum * 0.5)
+  // highSum.innerText = roundAbout(opts.max_sum * 0.9)
 
-  lowSum = domOne('.low_sum')
-  midSum = domOne('.mid_sum')
-  highSum = domOne('.high_sum')
-  lowSum.innerText = ''
-  midSum.innerText = roundAbout(opts.max_visible_sum * 0.5)
-  highSum.innerText = roundAbout(opts.max_visible_sum * 0.9)
+  const startArea = nodes.labels.startArea
+  const startYear = nodes.labels.startYear
+  const startSum = nodes.labels.startSum
+  const endArea = nodes.labels.endArea
+  const endYear = nodes.labels.endYear
+  const endSum = nodes.labels.endSum
+  const doneArea = nodes.labels.doneArea
+  const doneYear = nodes.labels.doneYear
+  const monthlyUsage = nodes.labels.monthlyUsage
 
-  startArea = domOne('.start_area')
-  startAge = dom('.start_year')
-  startSum = dom('.start_sum')
-  endArea = domOne('.end_area')
-  endAge = dom('.end_year')
-  endSum = dom('.end_sum')
-  doneArea = domOne('.done_area')
-  doneAge = dom('.done_year')
-  monthlyUsage = dom('.monthly_usage')
-
-  startAge.forEach(el => el.innerText = opts.start_year)
-  startSum.forEach(el => el.innerText = opts.initial_investment)
-  endAge.forEach(el => el.innerText = opts.end_year)
-  endSum.forEach(el => el.innerText = roundAbout(data.find(item => item.year === opts.end_year).value, 0))
+  startYear.forEach(el => el.innerText = opts.start_year)
+  startSum.forEach(el => el.innerText = opts.start_sum)
+  endYear.forEach(el => el.innerText = opts.end_year)
+  endSum.forEach(el => el.innerText = roundAbout(lastItemOf(data.profit).value, 0))
   monthlyUsage.forEach(el => el.innerText = opts.monthly_usage)
 
-  //Money lasts indefinitely?
-  if (donePoint.value > data.find(item => item.year === opts.end_year).value) {
-    doneAge.forEach(el => el.innerText = 'Infinite')
-  } else if (data[data.length - 1].value > 0) {
-    doneAge.forEach(el => el.innerText = donePoint.year + '+')
-  } else {
-    doneAge.forEach(el => el.innerText = donePoint.year)
-  }
 
+  const endPoint = lastItemOf(data.profit)
+  const donePoint = lastItemOf(data.usage)
+  let doneYearText
+  //Money lasts indefinitely?
+  console.log(endPoint.year, donePoint.year)
+  if (donePoint.value > endPoint.value) {
+    doneYearText = '∞'
+  } else if (donePoint.year === opts.max_year) {
+    doneYearText = donePoint.year + '+'
+  } else {
+    doneYearText = donePoint.year
+  }
+  doneYear.forEach(el => el.innerText = doneYearText)
+
+  //Classes for styling
   if (opts.start_year < 20) {
     startArea.classList.add('near-start')
   } else {
@@ -49,9 +50,26 @@ const setLabels = (data, opts) => {
     doneArea.classList.remove('near-end')
   }
 
-  startArea.style.width = `calc(${zeroToStart}% + 1px)`
-  endArea.style.width = `calc(${startToEnd}% + 1px)`
-  endArea.style.height = `calc(${endHeight}%)`
-  doneArea.style.width = `${endToStop}%`
+
+
+  const zeroToStart = year(opts.start_year) + '%'
+  const startToEnd = year(opts.end_year - opts.start_year) + '%'
+  const endHeight = 100 - value(lastItemOf(data.profit).value) + '%'
+  const endToDone = year(donePoint.year - opts.end_year) + '%'
+
+  startArea.style.width = `calc(${zeroToStart} + 1px)`
+  endArea.style.width = `calc(${startToEnd} + 1px)`
+  endArea.style.height = endHeight
+  doneArea.style.width = endToDone
+
+
+  //Scale years so scale matches 0..100%
+  function year (val) {
+    return val / (opts.max_year / 100)
+  }
+
+  function value (val) {
+    return val  / opts.max_sum * 100
+  }
 
 }

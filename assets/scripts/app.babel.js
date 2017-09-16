@@ -1,12 +1,13 @@
 domready(() => {
 
   //Defaults
-  let defaults = {
+  const defaults = {
     start_year: 30,
     end_year: 60,
-    initial_investment: 0,
+    max_year: 120,
+    start_sum: 0,
     monthly_investment: 500,
-    max_visible_sum: 1000000,
+    max_sum: 1000000,
     monthly_usage: 3000,
     entry_charge: 0,
     interest_rate: 7,
@@ -18,7 +19,30 @@ domready(() => {
 
 
   //Cache nodes
-  const graphSvg = dom('#graph-svg')[0]
+  const nodes = {
+    graph: {
+      root: domOne('#graph-svg'),
+      savings: domOne('svg .savings'),
+      profit: domOne('svg .profit'),
+      trajectory: domOne('svg .trajectory'),
+      usage: domOne('svg .usage'),
+    },
+    labels: {
+      startArea: domOne('.start_area'),
+      startYear: dom('.start_year'),
+      startSum: dom('.start_sum'),
+      endArea: domOne('.end_area'),
+      endYear: dom('.end_year'),
+      endSum: dom('.end_sum'),
+      doneArea: domOne('.done_area'),
+      doneYear: dom('.done_year'),
+      monthlyUsage: dom('.monthly_usage'),
+    },
+    inputs: {
+      number: dom('[type=number]'),
+      range: dom('[type=range]'),
+    },
+  }
   const numberInputs = dom('[type=number]')
   const rangeInputs = dom('[type=range]')
 
@@ -32,9 +56,9 @@ domready(() => {
       Object.assign(opts, opt) //Update opts
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }
-    data = calcData(opts)
-    drawGraph(data, graphSvg, opts)
-    setLabels(data, opts)
+    data = calculator(opts)
+    drawGraph(data, nodes, opts)
+    setLabels(data, nodes, opts)
   }
 
 
@@ -43,12 +67,15 @@ domready(() => {
 
     for (let key in defaults) {
       //Get opts from localStorage, but use default if not set
-      opts[key] = parseFloat(localStorage.getItem(key)) || defaults[key]
+      let value = localStorage.getItem(key)
+      if (value === null) value = defaults[key]
 
       //Set inputs to match opts
       dom(`[name="${key}"]`).forEach(el => {
-        el.value = opts[key]
+        el.value = value
       })
+
+      opts[key] = parseFloat(value)
     }
 
     document.addEventListener('input', main)
@@ -58,7 +85,8 @@ domready(() => {
     window.addEventListener('load', () => numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
       numberInputs.forEach(el => autowidth(el))
-      drawGraph(data, graphSvg, opts)
+      drawGraph(data, nodes, opts)
+      //setLabels(data, nodes, opts) // No need to redraw label because they're positioned with percentages
     }))
 
     numberInputs.forEach(el => autowidth(el))
