@@ -28,7 +28,6 @@ const setLabels = (data, nodes, opts) => {
   const donePoint = lastItemOf(data.usage)
   let doneYearText
   //Money lasts indefinitely?
-  console.log(endPoint.year, donePoint.year)
   if (donePoint.value > endPoint.value) {
     doneYearText = '∞'
   } else if (donePoint.year === opts.max_year) {
