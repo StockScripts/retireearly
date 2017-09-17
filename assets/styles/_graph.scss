@@ -18,109 +18,29 @@
   stroke: opacity($hilite, 1);
 }
 .graph .trajectory {
-  stroke: opacity($hilite, .5);
+  stroke: opacity($dark, 1);
   stroke-dasharray: .5 10;
 }
 .graph .usage {
   stroke: opacity($hilite, 1);
 }
-
-
-
-
-.y-axis {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  padding-left: .5rem;
-}
-.y-axis > * {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 0px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: .8em;
-  // border-bottom: 1px solid opacity($hilite, .2);
-}
-.high_sum {
-  position: absolute;
-  bottom: 90%;
-}
-.mid_sum {
-  position: absolute;
-  bottom: 50%;
-}
-.low_sum {
-  position: absolute;
-  bottom: 10%;
+.graph .divider {
+  stroke-width: 1.5;
+  stroke: opacity($dark, .25);
 }
 
-
-.x-axis {
-  position: absolute;
-  left: 0;
-  display: flex;
-  align-items: flex-end;
-  top: 0;
-  height: 100%;
-  width: 100%;
-}
-.x-area {
-  font-size: 1.25rem;
-  line-height: 1;
+.label {
   white-space: nowrap;
-  flex: 0 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  align-content: flex-end;
-  justify-content: flex-end;
-  padding: 4rem 0 .5rem 0;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  width: 1px;
 }
-.x-area .small {
-  position: relative;
-  padding: 0 .5rem;
-  border-radius: 1rem;
+.start_label {
 }
-.x-area .big {
-  font-weight: 700;
-  font-size: 2rem;
-  padding: 0 .5rem;
-  border-radius: 1rem;
+.end_label {
+  top: auto;
 }
-.start_area {
-}
-.start_area.near-start {
-  justify-content: flex-start;
-}
-.end_area {
-  align-self: flex-start;
-  max-height: calc(100% - 1.5rem);
-  align-content: flex-end;
-}
-.done_area {
-}
-.done_area.near-end {
-  justify-content: flex-end;
-}
-.over_area {
-  flex: 1 0 auto; //Other areas get explicit width, this one fills what's left
-}
-
-@media (max-width: 1000px) {
-  .x-area {
-    font-size: .9rem;
-    padding-top: 2.5rem;
-  }
-  .x-area .big {
-    font-size: 1.35rem;
-  }
-  .end_area {
-    max-height: calc(100% - 1.4rem);
-  }
+.done_label {
 }

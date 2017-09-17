@@ -20,31 +20,25 @@ domready(() => {
 
   //Cache nodes
   const nodes = {
-    graph: {
-      root: domOne('#graph-svg'),
-      savings: domOne('svg .savings'),
-      profit: domOne('svg .profit'),
-      trajectory: domOne('svg .trajectory'),
-      usage: domOne('svg .usage'),
-    },
-    labels: {
-      startArea: domOne('.start_area'),
-      startYear: dom('.start_year'),
-      startSum: dom('.start_sum'),
-      endArea: domOne('.end_area'),
-      endYear: dom('.end_year'),
-      endSum: dom('.end_sum'),
-      doneArea: domOne('.done_area'),
-      doneYear: dom('.done_year'),
-      monthlyUsage: dom('.monthly_usage'),
-    },
-    inputs: {
-      number: dom('[type=number]'),
-      range: dom('[type=range]'),
-    },
+    graph: domOne('#graph-svg'),
+    lines: domOne('.lines'),
+    savings: domOne('svg .savings'),
+    profit: domOne('svg .profit'),
+    trajectory: domOne('svg .trajectory'),
+    usage: domOne('svg .usage'),
+    divider: domOne('svg .divider'),
+    startLabel: domOne('.start_label'),
+    startYear: dom('.start_year'),
+    startSum: dom('.start_sum'),
+    endLabel: domOne('.end_label'),
+    endYear: dom('.end_year'),
+    endSum: dom('.end_sum'),
+    doneLabel: domOne('.done_label'),
+    doneYear: dom('.done_year'),
+    monthlyUsage: dom('.monthly_usage'),
+    numberInputs: dom('[type=number]'),
+    rangeInputs: dom('[type=range]'),
   }
-  const numberInputs = dom('[type=number]')
-  const rangeInputs = dom('[type=range]')
 
 
 
@@ -82,14 +76,14 @@ domready(() => {
     document.addEventListener('change', main)
     domOne('#reset').addEventListener('click', reset)
 
-    window.addEventListener('load', () => numberInputs.forEach(el => autowidth(el)))
+    window.addEventListener('load', () => nodes.numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
-      numberInputs.forEach(el => autowidth(el))
+      nodes.numberInputs.forEach(el => autowidth(el))
       drawGraph(data, nodes, opts)
       //setLabels(data, nodes, opts) // No need to redraw label because they're positioned with percentages
     }))
 
-    numberInputs.forEach(el => autowidth(el))
+    nodes.numberInputs.forEach(el => autowidth(el))
     main()
   }
 

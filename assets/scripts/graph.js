@@ -1,55 +1,63 @@
-const drawGraph = (data, nodes, opts) => {
-  const svg = nodes.graph.root
-  const savings = nodes.graph.savings
-  const profit = nodes.graph.profit
-  const trajectory = nodes.graph.trajectory
-  const usage = nodes.graph.usage
+//TODO: integrate labels to graph drawing
+function drawGraph (data, nodes, opts) {
+
+  //TODO: read boundinglientrect instead of clientWidth that causes reflow
 
   const x = {
     min: 0,
-    max: svg.clientWidth,
+    max: nodes.graph.clientWidth,
     scale: opts.max_year, //x axis is years, from 0..120
   }
   x.range = x.max - x.min
 
   const y = {
     min: 0,
-    max: svg.clientHeight,
+    max: nodes.graph.clientHeight,
     scale: opts.max_sum, //Values may go as high as the sky, but one million is the limit for now.
   }
   y.range = y.max - y.min
 
-  const viewBox = [x.min, y.min, x.range, y.range].join(' ')
-  //transform coordinate system to start from bottom left
-  const transform = 'translate(0, '+(y.min * 2 + y.range)+') scale(1,-1)'
 
-  const savingsPoints = data.savings.map(point => convertPoint(point, x, y)).join(' ')
-  const profitPoints = data.profit.map(point => convertPoint(point, x, y)).join(' ')
-  const trajectoryPoints = data.trajectory.map(point => convertPoint(point, x, y)).join(' ')
-  const usagePoints = data.usage.map(point => convertPoint(point, x, y)).join(' ')
+  const paths = dataToPaths(data, opts, x, y)
+  paths.viewBox = [x.min, y.min, x.range, y.range].join(' ')
 
-
-  svg.setAttribute('viewBox', viewBox)
-
-  savings.setAttributeNS(null, 'points', savingsPoints)
-  savings.setAttributeNS(null, 'transform', transform)
-
-  profit.setAttributeNS(null, 'points', profitPoints)
-  profit.setAttributeNS(null, 'transform', transform)
-
-  trajectory.setAttributeNS(null, 'points', trajectoryPoints)
-  trajectory.setAttributeNS(null, 'transform', transform)
-
-  usage.setAttributeNS(null, 'points', usagePoints)
-  usage.setAttributeNS(null, 'transform', transform)
+  renderGraph(nodes, paths, x, y)
 }
 
 
-const convertPoint = (point, x, y) => {
+function dataToPaths (data, opts, x, y) {
+  const savings = data.savings.map(point => convertPoint(point, x, y)).join(' ')
+  const profit = data.profit.map(point => convertPoint(point, x, y)).join(' ')
+  const trajectory = data.trajectory.map(point => convertPoint(point, x, y)).join(' ')
+  const usage = data.usage.map(point => convertPoint(point, x, y)).join(' ')
+  const divider = [{
+    year: data.usage[0].year,
+    value: 0
+  }, {
+    year: data.usage[0].year,
+    value: opts.max_sum
+  }].map(point => convertPoint(point, x, y)).join(' ')
+
+  return {savings, profit, trajectory, usage, divider}
+}
+
+
+function convertPoint (point, x, y) {
   //Scale year & value to match svg viewbox by dividing with max desired value and multiplying by max desired pixel width of canvas
   const year = point.year / x.scale * x.range
   const value = point.value / y.scale * y.range
 
   //Convert data point to svg path point
   return `${year},${value}`
+}
+
+
+function renderGraph (nodes, paths, x, y) {
+  nodes.graph.setAttribute('viewBox', paths.viewBox)
+  nodes.lines.setAttributeNS(null, 'transform', 'translate(0, '+y.range+') scale(1,-1)') //transform coordinate system to start from bottom left
+  nodes.savings.setAttributeNS(null, 'points', paths.savings)
+  nodes.profit.setAttributeNS(null, 'points', paths.profit)
+  nodes.trajectory.setAttributeNS(null, 'points', paths.trajectory)
+  nodes.usage.setAttributeNS(null, 'points', paths.usage)
+  nodes.divider.setAttributeNS(null, 'points', paths.divider)
 }

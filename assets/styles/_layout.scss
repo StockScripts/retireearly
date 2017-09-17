@@ -25,6 +25,7 @@ html, body {
   position: relative;
   width: 100%;
   margin: 1rem;
+  margin: calc(5vh + 2.5%) 5%;
   box-shadow: 0 1rem 5rem -1rem mix($hilite, black, 50);
 }
 

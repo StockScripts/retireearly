@@ -1,32 +1,25 @@
 <div class="graph">
   <div class="graph-inner">
     <svg id="graph-svg" class="graph-svg" preserveaspectratio="none">
-      <title id="graph-title">Retire early graph</title>
-      <polyline class="usage"/>
-      <polyline class="profit"/>
-      <polyline class="trajectory"/>
-      <polyline class="savings"/>
+        <title id="graph-title">Retire early graph</title>
+        <g class="lines">
+          <polyline class="trajectory"/>
+          <polyline class="usage"/>
+          <polyline class="savings"/>
+          <polyline class="profit"/>
+          <polyline class="divider"/>
+        </g>
     </svg>
-    <div class="y-axis" hidden>
-      <span class="low_sum"></span>
-      <span class="mid_sum"></span>
-      <span class="high_sum"></span>
-    </div>
-    <div class="x-axis">
-      <span class="x-area start_area">
-        <span class="small">Age <span class="start_year"></span></span>
-      </span>
-      <span class="x-area end_area">
-        <span class="small">Age <span class="end_year"></span></span>
-        <span class="break"></span>
-        <span class="big"><span class="end_sum"></span> €</span>
-      </span>
-      <span class="x-area done_area">
-        <span class="small">Age <span class="done_year"></span></span>
-      </span>
-      <span class="x-area over_year">
-        <span></span>
-      </span>
-    </div>
+    <span class="label start_label">
+      Age&nbsp;<span class="start_year"></span>
+    </span>
+    <span class="label end_label">
+      Age&nbsp;<span class="end_year"></span>
+      &nbsp;
+      <span class="end_sum"></span> €</span>
+    </span>
+    <span class="label done_label">
+      Age&nbsp;<span class="done_year"></span>
+    </span>
   </div>
 </div>
