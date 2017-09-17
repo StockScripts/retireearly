@@ -2,8 +2,8 @@ domready(() => {
 
   //Defaults
   const defaults = {
-    start_year: 30,
-    end_year: 60,
+    start_year: 33,
+    end_year: 65,
     max_year: 120,
     start_sum: 0,
     monthly_investment: 500,
@@ -27,14 +27,15 @@ domready(() => {
     trajectory: domOne('svg .trajectory'),
     usage: domOne('svg .usage'),
     divider: domOne('svg .divider'),
-    startLabel: domOne('.start_label'),
     startYear: dom('.start_year'),
+    startYearLabel: domOne('.start_year_label'),
     startSum: dom('.start_sum'),
-    endLabel: domOne('.end_label'),
     endYear: dom('.end_year'),
+    endYearLabel: domOne('.end_year_label'),
     endSum: dom('.end_sum'),
-    doneLabel: domOne('.done_label'),
+    endSumLabel: domOne('.end_sum_label'),
     doneYear: dom('.done_year'),
+    doneYearLabel: domOne('.done_year_label'),
     monthlyUsage: dom('.monthly_usage'),
     numberInputs: dom('[type=number]'),
     rangeInputs: dom('[type=range]'),
@@ -51,8 +52,7 @@ domready(() => {
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }
     data = calculator(opts)
-    drawGraph(data, nodes, opts)
-    setLabels(data, nodes, opts)
+    graph(data, nodes, opts)
   }
 
 
@@ -79,8 +79,7 @@ domready(() => {
     window.addEventListener('load', () => nodes.numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
       nodes.numberInputs.forEach(el => autowidth(el))
-      drawGraph(data, nodes, opts)
-      //setLabels(data, nodes, opts) // No need to redraw label because they're positioned with percentages
+      main()
     }))
 
     nodes.numberInputs.forEach(el => autowidth(el))
@@ -93,8 +92,8 @@ domready(() => {
     if (e) e.preventDefault()
     for (let key in opts) localStorage.removeItem(key)
     //window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
-    domOne('#start_year_num').focus()
     init()
+    domOne('#start_year_num').focus()
   }
 
 

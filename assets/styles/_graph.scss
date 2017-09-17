@@ -18,7 +18,7 @@
   stroke: opacity($hilite, 1);
 }
 .graph .trajectory {
-  stroke: opacity($dark, 1);
+  stroke: opacity($dark, .5);
   stroke-dasharray: .5 10;
 }
 .graph .usage {
@@ -29,18 +29,44 @@
   stroke: opacity($dark, .25);
 }
 
+.axis {
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  position: absolute;
+  color: opacity($dark, .2);
+}
+
+.x-axis {
+  bottom: -.25rem;
+  right: 0;
+}
+.y-axis {
+  top: 1px;
+  left: -.25rem;
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: left top;
+}
+
 .label {
   white-space: nowrap;
   display: flex;
   justify-content: center;
   position: absolute;
   top: 100%;
+  margin-top: .25rem;
   width: 1px;
 }
-.start_label {
+.start_year_label {
 }
-.end_label {
+.end_year_label {
+}
+.end_sum_label {
   top: auto;
+  margin-top: 0;
+  margin-bottom: .5rem;
 }
-.done_label {
+.done_year_label {
 }
