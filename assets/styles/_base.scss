@@ -22,6 +22,17 @@ a {
 a img {
   border: none;
 }
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  @media (max-width: 1000px) {
+    font-size: 2rem;
+  }
+}
 p {
   margin: 0 0 1.5rem 0;
 }

@@ -11,40 +11,57 @@ html, body {
   min-height: 100%;
 }
 
+.info {
+  flex-basis: 100%;
+  margin: calc(5vh + 2.5%) 5%;
+}
+.info-text {
+  max-width: 50rem;
+}
+
 .graph {
   position: sticky;
   position: -webkit-sticky;
+  z-index: 90;
   display: flex;
   top: 0;
   max-width: 100%;
   max-height: 100vh;
+  min-height: 20vh;
   flex: 4 0 600px;
+  pointer-events: none;
 }
 .graph-inner {
   align-self: stretch;
   position: relative;
   width: 100%;
-  margin: 1rem;
   margin: calc(5vh + 2.5%) 5%;
-  box-shadow: 0 1rem 5rem -1rem mix($hilite, black, 50);
+  background: $bg;
+  box-shadow:
+    0 1rem 5rem -1rem mix($hilite, black, 50),
+    0 1rem 5rem 3rem $bg,
+    0 0rem 0 .5rem $bg
+  ;
+  pointer-events: all;
+  @media (max-width: 1000px) {
+    margin: .5rem;
+  }
 }
 
 .controls {
   max-width: 100%;
+  margin: calc(2.5vh + 2.5%) 0;
 }
 
 @media (max-width: 1000px) {
-  .layout {
-    display: block;
-    padding-top: 20vh;
+  .info {
+    order: 0;
   }
   .graph {
-    position: fixed;
-    top: 0;
-    height: 20vh;
-    width: 100%;
-    z-index: 90;
-    background: $bg;
-    box-shadow: 0 0 2rem 1rem $bg;
+    order: 1;
+
+  }
+  .controls {
+    order: 2;
   }
 }

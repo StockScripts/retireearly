@@ -11,6 +11,15 @@
   display: none !important;
   visibility: hidden !important; //http://www.456bereastreet.com/archive/200711/screen_readers_sometimes_ignore_displaynone/
 }
+.hide-visually,
+.visually-hidden { //Only visible to screen readers, or when styles are disabled
+  position: absolute !important;
+  width: 0.1px;
+  height: 0.1px;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  opacity: 0 !important;
+  overflow: hidden;
+}
 
 .break {
   flex-basis: 100% !important;

@@ -53,6 +53,7 @@ const syncInputs = el => {
 
 
 
+//TODO: do autowidth with css instead, so there's no need for js calculation, at least gridlover 3 has an implementation ready
 const autowidth = (el) => {
   el.classList.add('autowidth')
 
@@ -69,7 +70,7 @@ const autowidth = (el) => {
   measure.innerText = el.value
 
   document.body.appendChild(measure)
-  const width = measure.clientWidth + 4
+  const width = measure.getBoundingClientRect().width + 4
   measure.remove()
 
   el.style.width = width + 'px'

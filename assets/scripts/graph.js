@@ -3,16 +3,18 @@ function graph (data, nodes, opts) {
 
   //TODO: read boundinglientrect instead of clientWidth that causes reflow
 
+  const graphRect = nodes.graph.getBoundingClientRect()
+
   const x = {
     min: 0,
-    max: nodes.graph.clientWidth,
+    max: graphRect.width,
     scale: opts.max_year, //x axis is years, from 0..120
   }
   x.range = x.max - x.min
 
   const y = {
     min: 0,
-    max: nodes.graph.clientHeight,
+    max: graphRect.height,
     scale: opts.max_sum, //Values may go as high as the sky, but one million is the limit for now.
   }
   y.range = y.max - y.min

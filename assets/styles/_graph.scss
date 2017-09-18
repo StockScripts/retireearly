@@ -37,17 +37,35 @@
   display: block;
   position: absolute;
   color: opacity($dark, .2);
+  mix-blend-mode: multiply;
+  @media (max-width: 1000px) {
+    font-size: 1rem
+  }
 }
 
-.x-axis {
-  bottom: -.25rem;
-  right: 0;
-}
 .y-axis {
-  top: 1px;
-  left: -.25rem;
-  transform: rotate(90deg) translateY(-100%);
-  transform-origin: left top;
+  top: .75rem;
+  // left: -.25rem;
+  right: 100%;
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: right top;
+  @media (max-width: 1000px) {
+    top: .5rem;
+    right: auto;
+    left: 0;
+    transform-origin: left top;
+    transform: rotate(90deg) translateY(-100%);
+  }
+}
+.x-axis {
+  // bottom: -.25rem;
+  top: 100%;
+  right: .75rem;
+  @media (max-width: 1000px) {
+    top: auto;
+    bottom: 0;
+    right: .25rem;
+  }
 }
 
 .label {
@@ -67,6 +85,11 @@
   top: auto;
   margin-top: 0;
   margin-bottom: .5rem;
+ text-shadow:
+   -1px -1px 0 $bg,
+    1px -1px 0 $bg,
+    -1px 1px 0 $bg,
+     1px 1px 0 $bg;
 }
 .done_year_label {
 }
