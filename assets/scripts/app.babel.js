@@ -9,10 +9,8 @@ domready(() => {
     monthly_investment: 500,
     max_sum: 1000000,
     monthly_usage: 3000,
-    entry_charge: 0,
     interest_rate: 7,
     total_expense_ratio: 0.5,
-    exit_charge: 0
   }
   let opts = {}
   let data = []
@@ -91,7 +89,6 @@ domready(() => {
   const reset = (e) => {
     if (e) e.preventDefault()
     for (let key in opts) localStorage.removeItem(key)
-    //window.location.reload() //TODO: should wrap this file as an init method instead and reinit the app instead of reload, but whatever
     init()
     domOne('#start_year_num').focus()
   }

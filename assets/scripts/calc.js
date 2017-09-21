@@ -30,6 +30,7 @@ function calculator (opts) {
 
   // Filter usage so last point is the year where it goes below zero
   usage = usage.filter(point => point.value > 0)
+  if (!usage.length) usage = [{year: opts.end_year, value: 0}]
 
   return {savings, profit, trajectory, usage}
 }
