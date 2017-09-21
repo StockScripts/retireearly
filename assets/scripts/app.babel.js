@@ -2,15 +2,15 @@ domready(() => {
 
   //Defaults
   const defaults = {
-    start_year: 33,
-    end_year: 65,
+    start_year: 0,
+    end_year: 0,
     max_year: 120,
     start_sum: 0,
-    monthly_investment: 500,
+    monthly_investment: 0,
     max_sum: 1000000,
-    monthly_usage: 3000,
-    interest_rate: 7,
-    total_expense_ratio: 0.5,
+    monthly_usage: 0,
+    interest_rate: 0,
+    total_expense_ratio: 0,
   }
   let opts = {}
   let data = []

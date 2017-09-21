@@ -133,9 +133,10 @@ function renderLabels (nodes, texts, coords, opts) {
   nodes.endSumLabel.style.left = coords.endX
   nodes.endSumLabel.style.bottom = coords.endY
   nodes.doneYearLabel.style.left = coords.doneX
-  if (texts.done_year === 'tosi vanha') {
-    nodes.doneYearLabel.hidden = true
-  } else {
-    nodes.doneYearLabel.hidden = false
-  }
+
+  //TODO: better conditions for hiding label
+  nodes.startYearLabel.hidden = opts.start_year === 0
+  nodes.endYearLabel.hidden = opts.end_year === 0
+  nodes.endSumLabel.hidden = texts.end_sum === 0
+  nodes.doneYearLabel.hidden = texts.done_year === 'tosi vanha' || texts.done_year === 0
 }

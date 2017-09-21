@@ -18,6 +18,14 @@
   </div>
 
   <div class="control">
+    <label for="end_year_num">Säästän</label>
+    <input type="number" data-parse="int" name="end_year" id="end_year_num" min="0" max="120" step="1" value="0" aria-describedby="end_year_num_unit">
+    <span hidden class="unit" id="end_year_num_unit"></span>
+    <span class="desc" id="end_year_num_desc"> vuotiaaksi</span>
+    <input type="range" data-parse="int" name="end_year" id="end_range_num" min="0" max="80" step="1" value="0">
+  </div>
+
+  <div class="control">
     <label for="start_sum_num">Minulla on jo</label>
     <input type="number" data-parse="int" name="start_sum" id="start_sum_num" min="0" max="" step="10" value="0" aria-describedby="start_sum_num_unit start_sum_num_desc">
     <span class="unit" id="start_sum_num_unit">€</span>
@@ -31,14 +39,6 @@
     <span class="unit" id="monthly_investment_num_unit">€</span>
     <span class="desc" id="monthly_investment_num_desc"> kuukausittain</span>
     <input type="range" data-parse="int" name="monthly_investment" id="monthly_investment_range" min="0" max="1000" step="10" value="0">
-  </div>
-
-  <div class="control">
-    <label for="end_year_num">Säästän</label>
-    <input type="number" data-parse="int" name="end_year" id="end_year_num" min="0" max="120" step="1" value="0" aria-describedby="end_year_num_unit">
-    <span hidden class="unit" id="end_year_num_unit"></span>
-    <span class="desc" id="end_year_num_desc"> vuotiaaksi</span>
-    <input type="range" data-parse="int" name="end_year" id="end_range_num" min="0" max="80" step="1" value="0">
   </div>
 
   <div class="control">
