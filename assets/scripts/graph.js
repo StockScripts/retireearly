@@ -84,9 +84,9 @@ function getLabelTexts(data, opts) {
   const donePoint = lastItemOf(data.usage)
   //Money lasts indefinitely?
   if (donePoint.value > endPoint.value) {
-    done_year = '∞'
+    done_year = 'tosi vanha'
   } else if (donePoint.year === opts.max_year) {
-    done_year = donePoint.year + '+'
+    done_year = 'yli ' + donePoint.year
   } else {
     done_year = donePoint.year
   }
@@ -101,7 +101,7 @@ function getLabelCoords (data, opts) {
   const startX = yearPercentage(opts.start_year, opts)
   const endX = yearPercentage(opts.end_year + 1, opts)
   const endY = valuePercentage(lastItemOf(data.profit).value, opts)
-  const doneX = yearPercentage(lastItemOf(data.usage).year, opts)
+  const doneX = yearPercentage(lastItemOf(data.usage).year + 1, opts)
 
   return {startX, endX, endY, doneX}
 }
@@ -133,4 +133,9 @@ function renderLabels (nodes, texts, coords, opts) {
   nodes.endSumLabel.style.left = coords.endX
   nodes.endSumLabel.style.bottom = coords.endY
   nodes.doneYearLabel.style.left = coords.doneX
+  if (texts.done_year === 'tosi vanha') {
+    nodes.doneYearLabel.hidden = true
+  } else {
+    nodes.doneYearLabel.hidden = false
+  }
 }

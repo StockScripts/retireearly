@@ -30,7 +30,7 @@
 }
 
 .axis {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
@@ -44,7 +44,7 @@
 }
 
 .y-axis {
-  top: .75rem;
+  top: .5rem;
   // left: -.25rem;
   right: 100%;
   transform: rotate(90deg) translateX(100%);
@@ -59,8 +59,8 @@
 }
 .x-axis {
   // bottom: -.25rem;
-  top: 100%;
-  right: .75rem;
+  top: calc(100% + .25rem);
+  right: .0rem;
   @media (max-width: 1000px) {
     top: auto;
     bottom: 0;
@@ -82,10 +82,17 @@
 .end_year_label {
 }
 .end_sum_label {
+  //TODO: add age here too
+  /*
+    left: 0;
+    right: X%;
+    niin stoppaa vasempaan reunaan, age menee reunan mukana niin vasemmalle kun oikee reuna työntää, mutta tekstit roikkuu oikeelta ulos jos width menee pienemmäks ku sisältö
+    sijainti skriptissä top-pohjaseks ettei mee ylhäältä yli, jotta toimii mobiilillaki nätisti
+  */
   top: auto;
   margin-top: 0;
   margin-bottom: .5rem;
- text-shadow:
+  text-shadow:
    -1px -1px 0 $bg,
     1px -1px 0 $bg,
     -1px 1px 0 $bg,

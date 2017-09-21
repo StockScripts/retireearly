@@ -1,13 +1,13 @@
 input {
   -webkit-appearance: none;
 
-  // font: inherit;
-  // line-height: inherit;
-  // height: auto;
+  font: inherit;
+  line-height: inherit;
+  height: auto;
 
-  font-size: 2rem;
-  line-height: 2rem;
-  letter-spacing: -1px;
+  // font-size: 2rem;
+  // line-height: 2rem;
+  // letter-spacing: -1px;
 
   text-align: center;
   color: $hilite;
@@ -39,13 +39,16 @@ button,
   background: $hilite;
   color: $hilite;
   background: $bg;
-  padding: .8rem 2rem;
+  padding: .5rem 1rem;
   // border: none;
   // border-radius: 2px;
   border: 2px solid;
 }
-button:focus,
-.button:focus {
-  box-shadow: 0 0 0 4px opacity($dark, .5);
-  outline: none;
+.button-link {
+  font: inherit;
+  text-decoration: underline;
+  text-transform: none;
+  padding: 0;
+  border: none;
+  background: none;
 }

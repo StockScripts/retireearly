@@ -10,17 +10,25 @@
 html {
   font-family: 'Futura PT Multilingual W01', Futura PT, sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   color: $dark;
   background-color: $bg;
   text-size-adjust: 100%; //So mobile viewports don't apply strange auto adjustments to element font sizes
+  @media (max-width: 1000px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 a {
+  color: $hilite;
   text-decoration: underline;
 }
 a img {
   border: none;
+}
+b {
+  font-weight: 700;
 }
 h1 {
   font-weight: 700;
@@ -28,7 +36,7 @@ h1 {
   line-height: 1;
   letter-spacing: .18em;
   text-transform: uppercase;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0 0;
   @media (max-width: 1000px) {
     font-size: 2rem;
   }
