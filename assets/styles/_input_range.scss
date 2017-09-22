@@ -2,8 +2,6 @@ $track-height: 1.5rem;
 $thumb-height: 1.5rem;
 $thumb-width: 1.5rem;
 
-//TODO: make bigger thumb and use svg triangle as background to get the shape so the track is useable with a finger too.
-
 @mixin range-track {
   -webkit-appearance: none;
   // height: $track-height;

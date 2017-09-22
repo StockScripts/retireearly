@@ -88,16 +88,24 @@ domready(() => {
     monthlyUsage: domAll('.monthly_usage'),
     numberInputs: domAll('[type=number]'),
     rangeInputs: domAll('[type=range]'),
+
+    start_year_num: domOne('#start_year_num'),
+    start_year_range: domOne('#start_year_range'),
+    end_year_num: domOne('#end_year_num'),
+    end_year_range: domOne('#end_year_range'),
+    usage_year_num: domOne('#usage_year_num'),
+    usage_year_range: domOne('#usage_year_range'),
   }
 
 
 
   const main = e => {
     if (e) {
-      const name = e.target.name
+      const el = e.target
+      constrainInputs(el)
+      syncInputs(el)
+      const name = el.name
       const opt = getOpt(e.target)
-      syncInputs(e.target)
-      //TODO: sync inputs that depend on each other
       Object.assign(opts, opt) //Update opts
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }

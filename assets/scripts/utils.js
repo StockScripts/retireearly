@@ -12,7 +12,7 @@ function roundAbout (value) {
 }
 
 
-const getOpt = input => {
+function getOpt (input) {
   let value
   if (input.dataset.parse === 'int') {
     value = parseInt(input.value)
@@ -36,7 +36,7 @@ const getOpt = input => {
 
 
 
-const syncInputs = el => {
+function syncInputs (el) {
   const targets = domAll(`[name="${el.name}"]`)
   if (targets.length) {
     targets.forEach(target => {
@@ -51,10 +51,33 @@ const syncInputs = el => {
 }
 
 
+function constrainInputs (exclude, nodes) {
+
+  const name = exclude.name
+
+  //TODO TODO TODO TODO
+  if (name == 'start_year') {
+    //TODO TODO TODO TODO
+    //when going up
+    //push nodes.end_year +2 from nodes.this value
+    //push nodes.usage_year +2 from nodes.end_year.value
+  }
+  if (name == 'end_year') {
+    //TODO TODO TODO TODO
+    //push nodes.start_year -2 from nodes.this value
+    //push nodes.usage_year +2 from nodes.end_year.value
+  }
+  if (name == 'usage_year') {
+    //TODO TODO TODO TODO
+    //push nodes.end_year -2 from nodes.this value
+    //push nodes.start_year -2 from nodes.end_year
+  }
+}
+
 
 
 //TODO: do autowidth with css instead, so there's no need for js calculation, at least gridlover 3 has an implementation ready
-const autowidth = (el) => {
+function autowidth (el) {
   el.classList.add('autowidth')
 
   const style = window.getComputedStyle(el)

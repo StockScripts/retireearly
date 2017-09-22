@@ -1,7 +1,4 @@
-//TODO: integrate labels to graph drawing
 function graph (data, nodes, opts) {
-
-  //TODO: read boundinglientrect instead of clientWidth that causes reflow
 
   const graphRect = nodes.graph.getBoundingClientRect()
 
