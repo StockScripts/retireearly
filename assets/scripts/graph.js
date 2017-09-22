@@ -21,8 +21,6 @@ function graph (data, nodes, opts) {
 
 
   const paths = dataToPaths(data, opts, x, y)
-  paths.viewBox = [x.min, y.min, x.range, y.range].join(' ')
-
   const texts = getLabelTexts(data, opts)
   const coords = getLabelCoords(data, opts)
 
@@ -37,19 +35,13 @@ function graph (data, nodes, opts) {
 
 
 function dataToPaths (data, opts, x, y) {
+  const viewBox = [x.min, y.min, x.range, y.range].join(' ')
   const savings = data.savings.map(point => convertPoint(point, x, y)).join(' ')
   const profit = data.profit.map(point => convertPoint(point, x, y)).join(' ')
-  const trajectory = data.trajectory.map(point => convertPoint(point, x, y)).join(' ')
+  const growth = data.growth.map(point => convertPoint(point, x, y)).join(' ')
   const usage = data.usage.map(point => convertPoint(point, x, y)).join(' ')
-  const divider = [{
-    year: data.usage[0].year,
-    value: 0
-  }, {
-    year: data.usage[0].year,
-    value: opts.max_sum
-  }].map(point => convertPoint(point, x, y)).join(' ')
 
-  return {savings, profit, trajectory, usage, divider}
+  return {savings, profit, growth, usage, viewBox}
 }
 
 
@@ -68,9 +60,8 @@ function renderGraph (nodes, paths, x, y) {
   nodes.lines.setAttributeNS(null, 'transform', 'translate(0, '+y.range+') scale(1,-1)') //transform coordinate system to start from bottom left
   nodes.savings.setAttributeNS(null, 'points', paths.savings)
   nodes.profit.setAttributeNS(null, 'points', paths.profit)
-  nodes.trajectory.setAttributeNS(null, 'points', paths.trajectory)
+  nodes.growth.setAttributeNS(null, 'points', paths.growth)
   nodes.usage.setAttributeNS(null, 'points', paths.usage)
-  nodes.divider.setAttributeNS(null, 'points', paths.divider)
 }
 
 
@@ -78,6 +69,10 @@ function renderGraph (nodes, paths, x, y) {
 
 
 function getLabelTexts(data, opts) {
+
+  let saved_sum = roundAbout(lastItemOf(data.savings).value, 0)
+  let top_sum = roundAbout(lastItemOf(data.growth).value, 0)
+  let top_year = lastItemOf(data.growth).year
 
   let done_year
   const endPoint = lastItemOf(data.profit)
@@ -91,19 +86,20 @@ function getLabelTexts(data, opts) {
     done_year = donePoint.year
   }
 
-  let end_sum = roundAbout(lastItemOf(data.profit).value, 0)
-
-  return {done_year, end_sum}
+  return {saved_sum, top_sum, top_year, done_year}
 }
 
 
 function getLabelCoords (data, opts) {
   const startX = yearPercentage(opts.start_year, opts)
   const endX = yearPercentage(opts.end_year + 1, opts)
-  const endY = valuePercentage(lastItemOf(data.profit).value, opts)
+  const savedX = endX
+  const savedY = valuePercentage(lastItemOf(data.savings).value, opts)
+  const topX = yearPercentage(opts.usage_year + 1, opts)
+  const topY = valuePercentage(lastItemOf(data.growth).value, opts)
   const doneX = yearPercentage(lastItemOf(data.usage).year + 1, opts)
 
-  return {startX, endX, endY, doneX}
+  return {startX, endX, savedX, savedY, topX, topY, doneX}
 }
 
 
@@ -122,21 +118,29 @@ function valuePercentage (val, opts) {
 //Updates labels outside the graph too, if nodes contain such nodes, up to config.
 function renderLabels (nodes, texts, coords, opts) {
   nodes.startYear.forEach(el => el.innerText = opts.start_year)
-  nodes.startSum.forEach(el => el.innerText = opts.start_sum)
   nodes.endYear.forEach(el => el.innerText = opts.end_year)
-  nodes.endSum.forEach(el => el.innerText = texts.end_sum)
-  nodes.monthlyUsage.forEach(el => el.innerText = opts.monthly_usage)
+  nodes.topYear.forEach(el => el.innerText = texts.top_year)
   nodes.doneYear.forEach(el => el.innerText = texts.done_year)
+
+  nodes.savedSum.forEach(el => el.innerText = texts.saved_sum)
+  nodes.topSum.forEach(el => el.innerText = texts.top_sum)
 
   nodes.startYearLabel.style.left = coords.startX
   nodes.endYearLabel.style.left = coords.endX
-  nodes.endSumLabel.style.left = coords.endX
-  nodes.endSumLabel.style.bottom = coords.endY
+  nodes.topYearLabel.style.left = coords.topX
   nodes.doneYearLabel.style.left = coords.doneX
 
+  nodes.savedSumLabel.style.left = coords.savedX
+  nodes.savedSumLabel.style.bottom = coords.savedY
+
+  nodes.topSumLabel.style.left = coords.topX
+  nodes.topSumLabel.style.bottom = coords.topY
+
+  nodes.monthlyUsage.forEach(el => el.innerText = opts.monthly_usage)
+
   //TODO: better conditions for hiding label
-  nodes.startYearLabel.hidden = opts.start_year === 0
-  nodes.endYearLabel.hidden = opts.end_year === 0
-  nodes.endSumLabel.hidden = texts.end_sum === 0
-  nodes.doneYearLabel.hidden = texts.done_year === 'tosi vanha' || texts.done_year === 0
+  // nodes.startYearLabel.hidden = opts.start_year === 0
+  // nodes.endYearLabel.hidden = opts.end_year === 0
+  // nodes.endSumLabel.hidden = texts.end_sum === 0
+  // nodes.doneYearLabel.hidden = texts.done_year === 'tosi vanha' || texts.done_year === 0
 }

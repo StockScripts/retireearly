@@ -1,13 +1,15 @@
 <form class="controls">
   <div class="control">
-      Kokeile valmiita suunnitelmia:
-      <button class="button-link">Pesämuna muksulle</button>
+<!--       Kokeile valmiita suunnitelmia:
       <br>
-      <button class="button-link">Opintolainat kasvamaan</button>
+      <button class="button-link" type="reset" value="0">Pesämuna muksulle</button>
       <br>
-      <button class="button-link">Kolmikymppisenä eläkesäästäjäksi</button>
+      <button class="button-link" type="reset" value="0">Opintolainat kasvamaan</button>
       <br>
-      <button class="button-link" type="reset" id="reset">Nollaa valinnat</button>
+      <button class="button-link" type="reset" value="0">Kolmikymppisenä eläkesäästäjäksi</button>
+      <br> -->
+      <button class="button-link" type="reset" value="0">Devaa valinnat</button>
+      <button class="button-link" type="reset" value="1">Nollaa valinnat</button>
   </div>
   <div class="control">
     <label for="start_year_num">Olen noin</label>
@@ -27,10 +29,10 @@
 
   <div class="control">
     <label for="start_sum_num">Minulla on jo</label>
-    <input type="number" data-parse="int" name="start_sum" id="start_sum_num" min="0" max="" step="10" value="0" aria-describedby="start_sum_num_unit start_sum_num_desc">
+    <input type="number" data-parse="int" name="start_sum" id="start_sum_num" min="0" max="" step="100" value="0" aria-describedby="start_sum_num_unit start_sum_num_desc">
     <span class="unit" id="start_sum_num_unit">€</span>
     <span class="desc" id="start_sum_num_desc"> säästössä</span>
-    <input type="range" data-parse="int" name="start_sum" id="start_sum_range" min="0" max="10000" step="100" value="0">
+    <input type="range" data-parse="int" name="start_sum" id="start_sum_range" min="0" max="20000" step="100" value="0">
   </div>
 
   <div class="control">
@@ -62,10 +64,22 @@
   </div>
 
   <div class="control">
+    Annan rahojen kasvaa:
+  </div>
+
+  <div class="control">
+    <label for="usage_year_num">Kunnes olen</label>
+    <input type="number" data-parse="int" name="usage_year" id="usage_year_num" min="0" max="120" step="1" value="0" aria-describedby="usage_year_unit">
+    <span class="unit" id="usage_year_unit"></span>
+    <span class="desc" id="usage_year_unit"> vuotias</span>
+    <input type="range" data-parse="float" name="usage_year" id="usage_year_range" min="0" max="120" step="1" value="0">
+  </div>
+
+  <div class="control">
     <label for="monthly_usage_num">
       Käyttäisin lopulta
     </label>
-    <input type="number" data-parse="int" name="monthly_usage" id="monthly_usage_num" min="0" max="" step="1" value="0" aria-describedby="monthly_usage_num_unit monthly_usage_num_desc">
+    <input type="number" data-parse="int" name="monthly_usage" id="monthly_usage_num" min="0" max="" step="10" value="0" aria-describedby="monthly_usage_num_unit monthly_usage_num_desc">
     <span class="unit" id="monthly_usage_num_unit">€</span>
     <span class="desc" id="monthly_usage_num_desc"> kuussa</span>
     <input type="range" data-parse="int" name="monthly_usage" id="monthly_usage_range" min="0" max="5000" step="100" value="0">
@@ -74,9 +88,11 @@
   <div class="text">
     <br>
     <p>
-      Kun olen <span class="end_year">X</span> vuotias,
+      Säästämällä yhteenä <span class="saved_sum">X</span> €,
       <br>
-      minulla voisi olla <span class="end_sum">XX</span><span class="unit"> €</span>.
+      kun olen <span class="top_year">X</span> vuotias
+      <br>
+      minulla voisi olla <span class="top_sum">XX</span><span class="unit"> €</span>.
       <br>
       Voisin käyttää <span class="monthly_usage">X</span><span class="unit"> €</span> kuussa,
       <br>

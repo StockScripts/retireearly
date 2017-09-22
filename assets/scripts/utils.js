@@ -1,4 +1,4 @@
-const dom = q => [...document.querySelectorAll(q)]
+const domAll = q => [...document.querySelectorAll(q)]
 const domOne = q => document.querySelector(q)
 const lastItemOf = arr => arr[arr.length - 1]
 
@@ -28,16 +28,16 @@ const getOpt = input => {
 
 
 //In case we want to read opts from the dom instead of providing defaults, not used and probably should not be used
-// const getOpts = el => {
+// const getAllOpts = el => {
 //   let opts = {}
-//   dom('input').forEach(input => Object.assign(opts, getOpt(input)))
+//   domOne('input').forEach(input => Object.assign(opts, getOpt(input)))
 //   return opts
 // }
 
 
 
 const syncInputs = el => {
-  const targets = dom(`[name="${el.name}"]`)
+  const targets = domAll(`[name="${el.name}"]`)
   if (targets.length) {
     targets.forEach(target => {
       if (target !== el) {

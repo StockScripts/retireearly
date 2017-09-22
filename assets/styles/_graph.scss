@@ -24,10 +24,6 @@
 .graph .usage {
   stroke: opacity($hilite, 1);
 }
-.graph .divider {
-  stroke-width: 1.5;
-  stroke: opacity($dark, .25);
-}
 
 .axis {
   font-size: 2rem;
@@ -77,18 +73,8 @@
   margin-top: .25rem;
   width: 1px;
 }
-.start_year_label {
-}
-.end_year_label {
-}
-.end_sum_label {
-  //TODO: add age here too
-  /*
-    left: 0;
-    right: X%;
-    niin stoppaa vasempaan reunaan, age menee reunan mukana niin vasemmalle kun oikee reuna työntää, mutta tekstit roikkuu oikeelta ulos jos width menee pienemmäks ku sisältö
-    sijainti skriptissä top-pohjaseks ettei mee ylhäältä yli, jotta toimii mobiilillaki nätisti
-  */
+.saved_sum_label,
+.top_sum_label {
   top: auto;
   margin-top: 0;
   margin-bottom: .5rem;
@@ -97,6 +83,4 @@
     1px -1px 0 $bg,
     -1px 1px 0 $bg,
      1px 1px 0 $bg;
-}
-.done_year_label {
 }

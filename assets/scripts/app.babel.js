@@ -1,17 +1,59 @@
 domready(() => {
 
   //Defaults
-  const defaults = {
-    start_year: 0,
-    end_year: 0,
-    max_year: 120,
-    start_sum: 0,
-    monthly_investment: 0,
-    max_sum: 1000000,
-    monthly_usage: 0,
-    interest_rate: 0,
-    total_expense_ratio: 0,
-  }
+  const presets = [
+    {
+      //DEV
+      start_year: 10,
+      end_year: 40,
+      max_year: 120,
+      start_sum: 10000,
+      monthly_investment: 500,
+      max_sum: 1000000,
+      usage_year: 65,
+      monthly_usage: 1500,
+      interest_rate: 2,
+      total_expense_ratio: 1,
+    },
+    {
+      //ZERO
+      start_year: 0,
+      end_year: 0,
+      max_year: 120,
+      start_sum: 0,
+      monthly_investment: 0,
+      max_sum: 1000000,
+      usage_year: 0,
+      monthly_usage: 0,
+      interest_rate: 0,
+      total_expense_ratio: 0,
+    },
+    // {
+    //   //SAVE FOR KID
+    //   start_year: 0,
+    //   end_year: 18,
+    //   max_year: 120,
+    //   start_sum: 0,
+    //   monthly_investment: 50,
+    //   max_sum: 1000000,
+    //   monthly_usage: 0,
+    //   interest_rate: 7,
+    //   total_expense_ratio: 0.5,
+    // },
+    // {
+    //   //INVEST STUDENT LOAN
+    //   start_year: 18,
+    //   end_year: 23,
+    //   max_year: 120,
+    //   start_sum: 0,
+    //   monthly_investment: 200,
+    //   max_sum: 1000000,
+    //   monthly_usage: 0,
+    //   interest_rate: 7,
+    //   total_expense_ratio: 0.5,
+    // }
+  ]
+  let defaults = presets[0]
   let opts = {}
   let data = []
 
@@ -22,21 +64,30 @@ domready(() => {
     lines: domOne('.lines'),
     savings: domOne('svg .savings'),
     profit: domOne('svg .profit'),
-    trajectory: domOne('svg .trajectory'),
+    growth: domOne('svg .growth'),
     usage: domOne('svg .usage'),
-    divider: domOne('svg .divider'),
-    startYear: dom('.start_year'),
+
+    startYear: domAll('.start_year'),
     startYearLabel: domOne('.start_year_label'),
-    startSum: dom('.start_sum'),
-    endYear: dom('.end_year'),
+    startSum: domAll('.start_sum'),
+
+    endYear: domAll('.end_year'),
     endYearLabel: domOne('.end_year_label'),
-    endSum: dom('.end_sum'),
-    endSumLabel: domOne('.end_sum_label'),
-    doneYear: dom('.done_year'),
+
+    savedSum: domAll('.saved_sum'),
+    savedSumLabel: domOne('.saved_sum_label'),
+
+    topYear: domAll('.top_year'), //Top year is not necessarily the biggest monetary value if the costs are high, but let's assume we're calculating positive growth. :)
+    topYearLabel: domOne('.top_year_label'),
+    topSum: domAll('.top_sum'),
+    topSumLabel: domOne('.top_sum_label'),
+
+    doneYear: domAll('.done_year'),
     doneYearLabel: domOne('.done_year_label'),
-    monthlyUsage: dom('.monthly_usage'),
-    numberInputs: dom('[type=number]'),
-    rangeInputs: dom('[type=range]'),
+
+    monthlyUsage: domAll('.monthly_usage'),
+    numberInputs: domAll('[type=number]'),
+    rangeInputs: domAll('[type=range]'),
   }
 
 
@@ -46,6 +97,7 @@ domready(() => {
       const name = e.target.name
       const opt = getOpt(e.target)
       syncInputs(e.target)
+      //TODO: sync inputs that depend on each other
       Object.assign(opts, opt) //Update opts
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }
@@ -63,7 +115,7 @@ domready(() => {
       if (value === null) value = defaults[key]
 
       //Set inputs to match opts
-      dom(`[name="${key}"]`).forEach(el => {
+      domAll(`[name="${key}"]`).forEach(el => {
         el.value = value
       })
 
@@ -72,7 +124,7 @@ domready(() => {
 
     document.addEventListener('input', main)
     document.addEventListener('change', main)
-    domOne('#reset').addEventListener('click', reset)
+    document.addEventListener('click', reset)
 
     window.addEventListener('load', () => nodes.numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
@@ -86,11 +138,16 @@ domready(() => {
 
 
 
-  const reset = (e) => {
-    if (e) e.preventDefault()
-    for (let key in opts) localStorage.removeItem(key)
-    init()
-    domOne('#start_year_num').focus()
+  const reset = (event) => {
+    const button = event.target
+    if (button.type === 'reset') {
+      event.preventDefault()
+      for (let key in opts) localStorage.removeItem(key)
+      defaults = presets[parseInt(button.value)]
+
+      init()
+      domOne('#start_year_num').focus()
+    }
   }
 
 
