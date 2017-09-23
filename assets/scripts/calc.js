@@ -6,27 +6,26 @@ function calculator (opts) {
 
   let savings = [{year: opts.start_year, value: opts.start_sum}]
   let profit = [{year: opts.start_year, value: opts.start_sum}]
-  for (let year = opts.start_year; year <= opts.end_year; year++) {
-    //TODO: a array.reduce would be good here
+  for (let year = opts.start_year; year < opts.end_year; year++) {
     savings.push(
-      interestCalc(lastItemOf(savings), yearly_investment, 0)
+      addYear(lastItemOf(savings), yearly_investment, 0)
     )
     profit.push(
-      interestCalc(lastItemOf(profit), yearly_investment, interest)
+      addYear(lastItemOf(profit), yearly_investment, interest)
     )
   }
 
   let growth = profit.slice(-1)
-  for (let year = opts.end_year + 1; year < opts.usage_year; year++) {
+  for (let year = opts.end_year; year < opts.usage_year; year++) {
     growth.push(
-      interestCalc(lastItemOf(growth), 0, interest)
+      addYear(lastItemOf(growth), 0, interest)
     )
   }
 
   let usage = growth.slice(-1)
-  for (let year = opts.usage_year + 1; year < opts.max_year; year++) {
+  for (let year = opts.usage_year; year < opts.max_year; year++) {
     usage.push(
-      interestCalc(lastItemOf(usage), -1 * yearly_usage, interest)
+      addYear(lastItemOf(usage), -1 * yearly_usage, interest)
     )
   }
 
@@ -39,7 +38,7 @@ function calculator (opts) {
 }
 
 
-function interestCalc (point, sum, percentage) {
+function addYear (point, sum, percentage) {
   return {
     year: point.year + 1,
     value: (point.value + sum) * (1 + percentage / 100)
