@@ -167,6 +167,12 @@ domready(() => {
   }
 
 
+  const share = () => {
+    //TODO: generate shareable link with values encoded after #
+    //When loading the page, gulp the # params and delete from the url, data should not persist in the url, it should be for sharing only.
+  }
+
+
   init()
 
 

@@ -47,9 +47,8 @@
 .graph .profit {
   stroke: opacity($hilite, 1);
 }
-.graph .trajectory {
-  stroke: opacity($dark, .5);
-  stroke-dasharray: .5 10;
+.graph .growth {
+  stroke: opacity($hilite, 1);
 }
 .graph .usage {
   stroke: opacity($hilite, 1);
