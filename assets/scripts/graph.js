@@ -84,7 +84,7 @@ function getLabelTexts(data, opts) {
   const donePoint = lastItemOf(data.usage)
   //Money lasts indefinitely?
   if (donePoint.value > endPoint.value) {
-    done_year = ''
+    done_year = '∞'
   } else if (donePoint.year === opts.max_year) {
     done_year = 'yli ' + donePoint.year
   } else {
