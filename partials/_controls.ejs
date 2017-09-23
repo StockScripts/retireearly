@@ -8,14 +8,15 @@
       <br>
       <button class="button-link" type="reset" value="0">Kolmikymppisenä eläkesäästäjäksi</button>
       <br> -->
-      <button class="button-link" type="reset" value="0">Devaa valinnat</button>
+      <button class="button-link" type="reset" value="0">Dev preset</button>
+      |
       <button class="button-link" type="reset" value="1">Nollaa valinnat</button>
   </div>
   <div class="control">
-    <label for="start_year_num">Olen noin</label>
+    <label for="start_year_num">Aloitan</label>
     <input type="number" data-parse="int" name="start_year" id="start_year_num" min="0" max="120" step="1" value="0" aria-describedby="start_year_num_unit start_year_num_desc">
     <span class="unit" id="start_year_num_unit"></span>
-    <span class="desc" id="start_year_num_desc"> vuotias</span>
+    <span class="desc" id="start_year_num_desc"> vuotiaana</span>
     <input type="range" data-parse="int" name="start_year" id="start_year_range" min="0" max="60" step="1" value="0">
   </div>
 
@@ -64,14 +65,14 @@
   </div>
 
   <div class="control">
-    Annan rahojen kasvaa:
+    Annan varojeni kasvaa:
   </div>
 
   <div class="control">
-    <label for="usage_year_num">Kunnes olen</label>
+    <label for="usage_year_num">Alan käyttää rahoja</label>
     <input type="number" data-parse="int" name="usage_year" id="usage_year_num" min="0" max="120" step="1" value="0" aria-describedby="usage_year_unit">
-    <span class="unit" id="usage_year_unit"></span>
-    <span class="desc" id="usage_year_unit"> vuotias</span>
+    <!-- <span class="unit" id="usage_year_unit"></span> -->
+    <span class="desc" id="usage_year_unit"> vuotiaana</span>
     <input type="range" data-parse="float" name="usage_year" id="usage_year_range" min="0" max="120" step="1" value="0">
   </div>
 
@@ -88,15 +89,16 @@
   <div class="text">
     <br>
     <p>
-      Säästämällä yhteenä <span class="saved_sum">X</span> €,
+      Säästämällä yhteenä <span class="saved_sum">X</span> €
       <br>
-      kun olen <span class="top_year">X</span> vuotias
+      minulla voisi olla <span class="top_sum">XX</span><span class="unit"> €</span>
       <br>
-      minulla voisi olla <span class="top_sum">XX</span><span class="unit"> €</span>.
+      <span class="top_year">X</span> vuotiaana.
       <br>
-      Voisin käyttää <span class="monthly_usage">X</span><span class="unit"> €</span> kuussa,
       <br>
-      kunnes olen <span class="done_year"></span>.
+      Voisin käyttää <span class="monthly_usage">X</span><span class="unit"> €</span> kuussa
+      <br>
+      <span class="done_year"></span> vuotiaaksi saakka.
     </p>
   </div>
 
