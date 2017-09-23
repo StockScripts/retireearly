@@ -1,5 +1,5 @@
 <form class="controls">
-  <div class="control">
+  <div class="control presets">
     <b>Kokeile valmiita suunnitelmia:</b>
     <br>
     <br>
@@ -58,7 +58,7 @@
   </div>
 
   <div class="control">
-    Sijoitan säästöni:
+    <b>Sijoitan säästöni:</b>
   </div>
 
   <div class="control">
@@ -89,9 +89,7 @@
   </div>
 
   <div class="control">
-    <label for="monthly_usage_num">
-      Nostan
-    </label>
+    <label for="monthly_usage_num">Nostan</label>
     <input type="number" data-parse="int" name="monthly_usage" id="monthly_usage_num" min="0" max="" step="10" value="0" aria-describedby="monthly_usage_num_unit monthly_usage_num_desc">
     <span class="unit" id="monthly_usage_num_unit">€</span>
     <span class="desc" id="monthly_usage_num_desc">kuussa</span>
@@ -100,16 +98,18 @@
 
   <div class="text" tabindex="0">
     <p>
-      Säästämällä yhteenä <span class="saved_sum">X</span> €
+      Säästämällä yhteenä <span class="saved_sum">Y</span> €
       <br>
-      minulla voisi olla <span class="top_sum">XX</span><span class="unit"> €</span>
+      <!-- <span class="saved_years">X</span> vuoden aikana
+      <br> -->
+      minulla voisi olla <span class="top_sum">Y</span><span class="unit"> €</span>
       <br>
       <span class="top_year">X</span> vuotiaana.
       <br>
       <br>
-      Voisin käyttää <span class="monthly_usage">X</span><span class="unit"> €</span> kuussa
+      Voisin käyttää <span class="monthly_usage">Y</span><span class="unit"> €</span> kuussa
       <br>
-      <span class="done_year"></span> vuotiaaksi saakka.
+      <span class="done_year">X</span> vuotiaaksi saakka.
     </p>
   </div>
 
