@@ -15,6 +15,8 @@ function calculator (opts) {
     )
   }
 
+  //TODO: guard against nonsensical calculations, like end_year that's before start_year
+
   let growth = profit.slice(-1)
   for (let year = opts.end_year; year < opts.usage_year; year++) {
     growth.push(
