@@ -1,9 +1,7 @@
 domready(() => {
 
-  //Defaults
-  const presets = [
-    {
-      //DEV
+  const presets = {
+    dev: {
       start_year: 10,
       end_year: 40,
       max_year: 120,
@@ -12,11 +10,10 @@ domready(() => {
       max_sum: 1000000,
       usage_year: 65,
       monthly_usage: 1500,
-      interest_rate: 2,
+      interest_rate: 3,
       total_expense_ratio: 1,
     },
-    {
-      //ZERO
+    zero: {
       start_year: 0,
       end_year: 0,
       max_year: 120,
@@ -28,32 +25,44 @@ domready(() => {
       interest_rate: 0,
       total_expense_ratio: 0,
     },
-    // {
-    //   //SAVE FOR KID
-    //   start_year: 0,
-    //   end_year: 18,
-    //   max_year: 120,
-    //   start_sum: 0,
-    //   monthly_investment: 50,
-    //   max_sum: 1000000,
-    //   monthly_usage: 0,
-    //   interest_rate: 7,
-    //   total_expense_ratio: 0.5,
-    // },
-    // {
-    //   //INVEST STUDENT LOAN
-    //   start_year: 18,
-    //   end_year: 23,
-    //   max_year: 120,
-    //   start_sum: 0,
-    //   monthly_investment: 200,
-    //   max_sum: 1000000,
-    //   monthly_usage: 0,
-    //   interest_rate: 7,
-    //   total_expense_ratio: 0.5,
-    // }
-  ]
-  let defaults = presets[0]
+    save_for_kid: {
+      start_year: 0,
+      end_year: 10,
+      max_year: 120,
+      start_sum: 0,
+      monthly_investment: 50,
+      max_sum: 1000000,
+      usage_year: 65,
+      monthly_usage: 0,
+      interest_rate: 7,
+      total_expense_ratio: 0.5,
+    },
+    invest_student_loan: {
+      start_year: 18,
+      end_year: 23,
+      max_year: 120,
+      start_sum: 0,
+      monthly_investment: 200,
+      max_sum: 1000000,
+      usage_year: 65,
+      monthly_usage: 0,
+      interest_rate: 7,
+      total_expense_ratio: 0.5,
+    },
+    save_for_retirement: {
+      start_year: 30,
+      end_year: 65,
+      max_year: 120,
+      start_sum: 0,
+      monthly_investment: 500,
+      max_sum: 1000000,
+      usage_year: 65,
+      monthly_usage: 4500,
+      interest_rate: 7,
+      total_expense_ratio: 0.5,
+    }
+  }
+  let defaults = presets['zero']
   let opts = {}
   let data = []
 
@@ -132,7 +141,7 @@ domready(() => {
 
     document.addEventListener('input', main)
     document.addEventListener('change', main)
-    document.addEventListener('click', preset)
+    document.addEventListener('click', reset)
 
     window.addEventListener('load', () => nodes.numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
@@ -146,16 +155,14 @@ domready(() => {
 
 
 
-  const preset = (event) => {
+  const reset = (event) => {
     const button = event.target
     if (button.type === 'reset') {
+      console.log('reset', button.value)
       event.preventDefault()
-      for (let key in opts) localStorage.removeItem(key)
-      //TODO: if you refresh the page, preset values don't get saved!
-      defaults = presets[parseInt(button.value)]
-
+      const preset = presets[button.value]
+      for (let key in preset) localStorage.setItem(key, preset[key])
       init()
-      domOne('#start_year_num').focus()
     }
   }
 
