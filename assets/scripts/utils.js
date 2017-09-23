@@ -58,19 +58,18 @@ function constrainInputs (exclude, nodes) {
   //TODO TODO TODO TODO
   if (name == 'start_year') {
     //TODO TODO TODO TODO
-    //when going up
-    //push nodes.end_year +2 from nodes.this value
-    //push nodes.usage_year +2 from nodes.end_year.value
+    //push nodes.end_year up to nodes.this value
+    //push nodes.usage_year up to nodes.end_year.value
   }
   if (name == 'end_year') {
     //TODO TODO TODO TODO
-    //push nodes.start_year -2 from nodes.this value
-    //push nodes.usage_year +2 from nodes.end_year.value
+    //push nodes.start_year down to nodes.this value
+    //push nodes.usage_year up to nodes.end_year.value
   }
   if (name == 'usage_year') {
     //TODO TODO TODO TODO
-    //push nodes.end_year -2 from nodes.this value
-    //push nodes.start_year -2 from nodes.end_year
+    //push nodes.end_year down to nodes.this value
+    //push nodes.start_year down to nodes.end_year
   }
 }
 
