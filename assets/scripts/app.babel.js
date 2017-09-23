@@ -132,7 +132,7 @@ domready(() => {
 
     document.addEventListener('input', main)
     document.addEventListener('change', main)
-    document.addEventListener('click', reset)
+    document.addEventListener('click', preset)
 
     window.addEventListener('load', () => nodes.numberInputs.forEach(el => autowidth(el)))
     window.addEventListener('resize', () => requestAnimationFrame(() => {
@@ -146,11 +146,12 @@ domready(() => {
 
 
 
-  const reset = (event) => {
+  const preset = (event) => {
     const button = event.target
     if (button.type === 'reset') {
       event.preventDefault()
       for (let key in opts) localStorage.removeItem(key)
+      //TODO: if you refresh the page, preset values don't get saved!
       defaults = presets[parseInt(button.value)]
 
       init()
