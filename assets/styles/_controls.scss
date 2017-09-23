@@ -22,10 +22,12 @@
   cursor: pointer;
 }
 .control label:hover + input,
-.control label + input:hover,
-.control label + input:focus {
+.control label + input:hover, {
   // color: white;
   background: opacity($hilite, .3);
+}
+.control label + input:focus:hover {
+  background: none;
 }
 .control [type=range] {
   display: block;

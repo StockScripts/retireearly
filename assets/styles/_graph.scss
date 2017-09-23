@@ -1,9 +1,38 @@
-.graph svg {
+.graph {
+  position: sticky;
+  position: -webkit-sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 90;
+  top: -1px;
+  max-width: 100%;
+  max-height: 100vh;
+  min-height: 20vh;
+  flex: 4 0 600px;
+  pointer-events: none;
+  background: $bg;
+}
+.graph-inner {
+  flex: 1 0 auto;
+  align-self: stretch;
+  position: relative;
+  max-height: 20rem;
+  margin: calc(5vh + 2.5%) 5%;
+  background: $bg;
+  border-bottom: 3px solid $color;
+  pointer-events: all;
+  @media (max-width: 1000px) {
+    margin: 0 0 1.5rem 0;
+  }
+}
+.graph-svg {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  background: opacity($dark, .07);
 }
 .graph polyline {
   stroke-linecap: round;
@@ -64,20 +93,37 @@
   }
 }
 
-.label {
+.x.label {
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   position: absolute;
   top: 100%;
-  margin-top: .25rem;
+  margin-top: .5rem;
   width: 1px;
 }
-.saved_sum_label,
-.top_sum_label {
+.y.label {
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: absolute;
+  top: 100%;
+  width: 1px;
+}
+.y.saved_sum_label,
+.y.top_sum_label {
+  font-size: 1rem;
   top: auto;
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: .25rem;
   text-shadow:
    -1px -1px 0 $bg,
     1px -1px 0 $bg,

@@ -42,6 +42,18 @@ h1 {
     font-size: 2rem;
   }
 }
+small, .small {
+  font-size: .8rem;
+}
+.tiny {
+  font-size: .6rem;
+}
+.big {
+  font-size: 2rem;
+}
+.caps {
+  text-transform: uppercase;
+}
 p {
   margin: 0 0 1.5rem 0;
 }

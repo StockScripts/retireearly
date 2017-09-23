@@ -7,7 +7,7 @@ $thumb-width: 1.5rem;
   // height: $track-height;
   margin: 0 0 0 0;
   color: transparent;
-  background: opacity($dark, .2);
+  background: $medium;
   border-radius: 999px;
   border: none;
 }
@@ -23,7 +23,7 @@ $thumb-width: 1.5rem;
   // border-color: transparent transparent opacity($light, .7) transparent;
   border: none;
   background: opacity($hilite, 1);
-  box-shadow: 0 0 2rem 2px $bg;
+  // box-shadow: 0 0 2rem 2px $bg;
   border-radius: 99rem;
 }
 

@@ -19,34 +19,6 @@ html, body {
   max-width: 35rem;
 }
 
-.graph {
-  position: sticky;
-  position: -webkit-sticky;
-  display: flex;
-  z-index: 90;
-  top: 0;
-  max-width: 100%;
-  max-height: 100vh;
-  min-height: 20vh;
-  flex: 4 0 600px;
-  pointer-events: none;
-}
-.graph-inner {
-  align-self: stretch;
-  position: relative;
-  width: 100%;
-  margin: calc(5vh + 2.5%) 5%;
-  background: $bg;
-  box-shadow:
-    0 1rem 5rem -1rem mix($hilite, black, 50),
-    0 1rem 5rem 3rem $bg,
-    0 0rem 0 .5rem $bg
-  ;
-  pointer-events: all;
-  @media (max-width: 1000px) {
-    margin: .5rem;
-  }
-}
 
 .controls {
   max-width: 100%;
