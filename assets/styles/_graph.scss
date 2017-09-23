@@ -8,10 +8,11 @@
   top: -1px;
   max-width: 100%;
   max-height: 100vh;
-  min-height: 20vh;
+  min-height: 10rem;
   flex: 4 0 600px;
   pointer-events: none;
   background: $bg;
+  box-shadow: 0 1.5rem 2rem -1rem black(.5);
 }
 .graph-inner {
   flex: 1 0 auto;
@@ -19,11 +20,12 @@
   position: relative;
   max-height: 20rem;
   margin: calc(5vh + 2.5%) 5%;
-  background: $bg;
-  border-bottom: 3px solid $color;
+  // background: $bg;
+  border: 3px solid $color;
+  border-width: 0 0 3px 3px;
   pointer-events: all;
   @media (max-width: 1000px) {
-    margin: 0 0 1.5rem 0;
+    margin: 2.25rem 1.5rem 1.5rem 1.5rem;
   }
 }
 .graph-svg {
@@ -32,7 +34,6 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: opacity($dark, .07);
 }
 .graph polyline {
   stroke-linecap: round;
@@ -118,6 +119,10 @@
   top: 100%;
   width: 1px;
 }
+.y.label span {
+  display: inline-block;
+  line-height: 1;
+}
 .y.saved_sum_label,
 .y.top_sum_label {
   font-size: 1rem;
@@ -125,8 +130,12 @@
   margin-top: 0;
   margin-bottom: .25rem;
   text-shadow:
-   -1px -1px 0 $bg,
+    0 0 .5rem $bg,
+    0 0 .5rem $bg,
+    0 0 .5rem $bg,
+    0 0 .5rem $bg,
+    -1px -1px 0 $bg,
     1px -1px 0 $bg,
     -1px 1px 0 $bg,
-     1px 1px 0 $bg;
+    1px 1px 0 $bg;
 }

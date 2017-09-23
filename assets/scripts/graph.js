@@ -133,7 +133,7 @@ function renderLabels (nodes, texts, coords, opts) {
   nodes.doneYearLabel.style.left = coords.doneX
 
   nodes.savedSumLabel.hidden = texts.saved_sum == 0
-  nodes.topSumLabel.hidden = texts.top_sum == 0
+  nodes.topSumLabel.hidden = (texts.top_sum == 0 || texts.saved_sum == texts.top_sum)
 
   nodes.savedSumLabel.style.left = coords.savedX
   nodes.savedSumLabel.style.bottom = coords.savedY
