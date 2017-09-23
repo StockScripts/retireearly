@@ -66,35 +66,35 @@ function renderGraph (nodes, paths, x, y) {
 
 
 function getLabelTexts(data, opts) {
+  //TODO: maybe take all values from data, then it's up to the calculator to make sure the data is sane, so there's no need to check for opts this and that is bigger than that stuff here
 
   let saved_sum = roundAbout(lastItemOf(data.savings).value, 0)
   let top_sum = roundAbout(lastItemOf(data.growth).value, 0)
-  let top_year = lastItemOf(data.growth).year
 
   let done_year
   const endPoint = lastItemOf(data.profit)
   const donePoint = lastItemOf(data.usage)
   //Money lasts indefinitely?
-  if (donePoint.value > endPoint.value) {
-    done_year = 'tosi vanha'
+  if (donePoint.value === 0 || donePoint.value > endPoint.value) {
+    done_year = ''
   } else if (donePoint.year === opts.max_year) {
     done_year = 'yli ' + donePoint.year
   } else {
     done_year = donePoint.year
   }
 
-  return {saved_sum, top_sum, top_year, done_year}
+  return {saved_sum, top_sum, done_year}
 }
 
 
 function getLabelCoords (data, opts) {
   const startX = yearPercentage(opts.start_year, opts)
-  const endX = yearPercentage(opts.end_year + 1, opts)
+  const endX = yearPercentage(opts.end_year, opts)
   const savedX = endX
   const savedY = valuePercentage(lastItemOf(data.savings).value, opts)
-  const topX = yearPercentage(opts.usage_year + 1, opts)
+  const topX = yearPercentage(Math.max(opts.end_year, opts.usage_year), opts) //Top sum can't go left from the saving end year
   const topY = valuePercentage(lastItemOf(data.growth).value, opts)
-  const doneX = yearPercentage(lastItemOf(data.usage).year + 1, opts)
+  const doneX = yearPercentage(lastItemOf(data.usage).year, opts)
 
   return {startX, endX, savedX, savedY, topX, topY, doneX}
 }
@@ -116,28 +116,28 @@ function valuePercentage (val, opts) {
 function renderLabels (nodes, texts, coords, opts) {
   nodes.startYear.forEach(el => el.innerText = opts.start_year)
   nodes.endYear.forEach(el => el.innerText = opts.end_year)
-  nodes.topYear.forEach(el => el.innerText = texts.top_year)
+  nodes.topYear.forEach(el => el.innerText = opts.usage_year)
   nodes.doneYear.forEach(el => el.innerText = texts.done_year)
-
   nodes.savedSum.forEach(el => el.innerText = texts.saved_sum)
   nodes.topSum.forEach(el => el.innerText = texts.top_sum)
+  nodes.monthlyUsage.forEach(el => el.innerText = opts.monthly_usage)
+
+  nodes.startYearLabel.hidden = opts.start_year == 0
+  nodes.endYearLabel.hidden = opts.end_year <= opts.start_year
+  nodes.topYearLabel.hidden = opts.usage_year <= opts.end_year
+  nodes.doneYearLabel.hidden = texts.done_year <= opts.end_year
 
   nodes.startYearLabel.style.left = coords.startX
   nodes.endYearLabel.style.left = coords.endX
   nodes.topYearLabel.style.left = coords.topX
   nodes.doneYearLabel.style.left = coords.doneX
 
+  nodes.savedSumLabel.hidden = texts.saved_sum == 0
+  nodes.topSumLabel.hidden = texts.top_sum == 0
+
   nodes.savedSumLabel.style.left = coords.savedX
   nodes.savedSumLabel.style.bottom = coords.savedY
-
   nodes.topSumLabel.style.left = coords.topX
   nodes.topSumLabel.style.bottom = coords.topY
 
-  nodes.monthlyUsage.forEach(el => el.innerText = opts.monthly_usage)
-
-  //TODO: better conditions for hiding label
-  // nodes.startYearLabel.hidden = opts.start_year === 0
-  // nodes.endYearLabel.hidden = opts.end_year === 0
-  // nodes.endSumLabel.hidden = texts.end_sum === 0
-  // nodes.doneYearLabel.hidden = texts.done_year === 'tosi vanha' || texts.done_year === 0
 }
