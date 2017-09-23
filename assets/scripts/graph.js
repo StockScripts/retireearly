@@ -22,7 +22,7 @@ function graph (data, nodes, opts) {
   const coords = getLabelCoords(data, opts)
 
   requestAnimationFrame(() => {
-    renderGraph(nodes, paths, x, y)
+    renderGraph(nodes, paths, coords)
     renderLabels(nodes, texts, coords, opts)
   })
 }
@@ -38,7 +38,13 @@ function dataToPaths (data, opts, x, y) {
   const growth = data.growth.map(point => convertPoint(point, x, y)).join(' ')
   const usage = data.usage.map(point => convertPoint(point, x, y)).join(' ')
 
-  return {savings, profit, growth, usage, viewBox}
+  const endYear = lastItemOf(data.savings).year
+  const endYearLine = convertPoint({year: endYear, value: 0}, x, y) + ' ' + convertPoint({year: endYear, value: opts.max_sum}, x, y)
+
+  const topYear = lastItemOf(data.growth).year
+  const topYearLine = convertPoint({year: topYear, value: 0}, x, y) + ' ' + convertPoint({year: topYear, value: opts.max_sum}, x, y)
+
+  return {savings, profit, growth, usage, endYearLine, topYearLine, viewBox, x, y}
 }
 
 
@@ -52,13 +58,15 @@ function convertPoint (point, x, y) {
 }
 
 
-function renderGraph (nodes, paths, x, y) {
+function renderGraph (nodes, paths) {
   nodes.graph.setAttribute('viewBox', paths.viewBox)
-  nodes.lines.setAttributeNS(null, 'transform', 'translate(0, '+y.range+') scale(1,-1)') //transform coordinate system to start from bottom left
+  nodes.lines.setAttributeNS(null, 'transform', 'translate(0, '+paths.y.range+') scale(1,-1)') //transform coordinate system to start from bottom left
   nodes.savings.setAttributeNS(null, 'points', paths.savings)
   nodes.profit.setAttributeNS(null, 'points', paths.profit)
   nodes.growth.setAttributeNS(null, 'points', paths.growth)
   nodes.usage.setAttributeNS(null, 'points', paths.usage)
+  nodes.endYearLine.setAttributeNS(null, 'points', paths.endYearLine)
+  nodes.topYearLine.setAttributeNS(null, 'points', paths.topYearLine)
 }
 
 
@@ -75,7 +83,7 @@ function getLabelTexts(data, opts) {
   const endPoint = lastItemOf(data.profit)
   const donePoint = lastItemOf(data.usage)
   //Money lasts indefinitely?
-  if (donePoint.value === 0 || donePoint.value > endPoint.value) {
+  if (donePoint.value > endPoint.value) {
     done_year = ''
   } else if (donePoint.year === opts.max_year) {
     done_year = 'yli ' + donePoint.year
@@ -94,7 +102,7 @@ function getLabelCoords (data, opts) {
   const savedY = valuePercentage(lastItemOf(data.savings).value, opts)
   const topX = yearPercentage(Math.max(opts.end_year, opts.usage_year), opts) //Top sum can't go left from the saving end year
   const topY = valuePercentage(lastItemOf(data.growth).value, opts)
-  const doneX = yearPercentage(lastItemOf(data.usage).year, opts)
+  const doneX = yearPercentage(Math.min(lastItemOf(data.usage).year, opts.max_year), opts)
 
   return {startX, endX, savedX, savedY, topX, topY, doneX}
 }
@@ -132,8 +140,8 @@ function renderLabels (nodes, texts, coords, opts) {
   nodes.topYearLabel.style.left = coords.topX
   nodes.doneYearLabel.style.left = coords.doneX
 
-  nodes.savedSumLabel.hidden = texts.saved_sum == 0
-  nodes.topSumLabel.hidden = (texts.top_sum == 0 || texts.saved_sum == texts.top_sum)
+  nodes.savedSumLabel.hidden = (texts.saved_sum == 0 || texts.saved_sum == texts.top_sum)
+  nodes.topSumLabel.hidden = texts.top_sum == 0
 
   nodes.savedSumLabel.style.left = coords.savedX
   nodes.savedSumLabel.style.bottom = coords.savedY

@@ -76,6 +76,9 @@ domready(() => {
     growth: domOne('svg .growth'),
     usage: domOne('svg .usage'),
 
+    endYearLine: domOne('.end_year_line'),
+    topYearLine: domOne('.top_year_line'),
+
     startYear: domAll('.start_year'),
     startYearLabel: domOne('.start_year_label'),
     startSum: domAll('.start_sum'),
