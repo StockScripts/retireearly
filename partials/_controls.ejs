@@ -1,16 +1,26 @@
 <form class="controls">
   <div class="control">
-<!--       Kokeile valmiita suunnitelmia:
+      Kokeile valmiita suunnitelmia:
       <br>
-      <button class="button-link" type="reset" value="0">Pesämuna muksulle</button>
+      <button class="button-link" type="reset" value="save_for_kid">
+        Pesämuna muksulle
+      </button>
       <br>
-      <button class="button-link" type="reset" value="0">Opintolainat kasvamaan</button>
+      <button class="button-link" type="reset" value="invest_student_loan">
+        Opintolainat kasvamaan
+      </button>
       <br>
-      <button class="button-link" type="reset" value="0">Kolmikymppisenä eläkesäästäjäksi</button>
-      <br> -->
-      <button class="button-link" type="reset" value="0">Dev preset</button>
-      |
-      <button class="button-link" type="reset" value="1">Nollaa valinnat</button>
+      <button class="button-link" type="reset" value="save_for_retirement">
+        Kolmikymppisenä eläkesäästäjäksi
+      </button>
+      <br>
+      <button class="button-link" type="reset" value="zero">
+        Nollaa valinnat
+      </button>
+      <br>
+      <button class="button-link" type="reset" value="dev">
+        DEBUG
+      </button>
   </div>
   <div class="control">
     <label for="start_year_num">Aloitan</label>
@@ -65,7 +75,6 @@
   </div>
 
   <div class="control">
-    Annan varojeni kasvaa:
   </div>
 
   <div class="control">
@@ -86,8 +95,7 @@
     <input type="range" data-parse="int" name="monthly_usage" id="monthly_usage_range" min="0" max="5000" step="100" value="0">
   </div>
 
-  <div class="text">
-    <br>
+  <div class="text" tabindex="0">
     <p>
       Säästämällä yhteenä <span class="saved_sum">X</span> €
       <br>
