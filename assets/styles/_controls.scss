@@ -18,7 +18,16 @@
   // font-size: 2rem;
   color: $hilite;
 }
-.controls [type=range] {
+.control label {
+  cursor: pointer;
+}
+.control label:hover + input,
+.control label + input:hover,
+.control label + input:focus {
+  // color: white;
+  background: opacity($hilite, .3);
+}
+.control [type=range] {
   display: block;
   width: 100%;
   max-width: 600px;

@@ -28,7 +28,10 @@
 .big {
   font-size: 2rem;
 }
-.line {
+hr, .line {
+  width: calc(100% - 2rem);
+  margin: auto;
   border: 1px solid opacity($dark, .5);
+  border-width: 1px 0 0 0;
 }
 .space {width: 1rem; height: 1rem;}
