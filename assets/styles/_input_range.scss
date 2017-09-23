@@ -7,12 +7,12 @@ $thumb-width: 1.5rem;
   // height: $track-height;
   margin: 0 0 0 0;
   color: transparent;
-  background: $medium;
+  background: white(.1);
   border-radius: 999px;
   border: none;
 }
 @mixin range-track-focus {
-  box-shadow: 0 0 0 2px opacity($hilite, 1);
+  // box-shadow: 0 0 0 2px opacity($hilite, 1);
 }
 @mixin range-thumb {
   -webkit-appearance: none;
@@ -22,7 +22,7 @@ $thumb-width: 1.5rem;
   // border-width: 0 $thumb-width/2 $thumb-height $thumb-width/2;
   // border-color: transparent transparent opacity($light, .7) transparent;
   border: none;
-  background: opacity($hilite, 1);
+  background: white(.8);
   // box-shadow: 0 0 2rem 2px $bg;
   border-radius: 99rem;
 }
@@ -41,8 +41,8 @@ input[type=range] {
   overflow: hidden;
 }
 input[type=range]:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px opacity($hilite, 1);
+  // outline: none;
+  // box-shadow: 0 0 0 2px opacity($hilite, 1);
 }
 
 
@@ -55,15 +55,15 @@ input[type=range]::-moz-range-track {
 input[type=range]::-ms-track {
   @include range-track();
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  @include range-track-focus();
-}
-input[type=range]:focus::-moz-range-track {
-  @include range-track-focus();
-}
-input[type=range]:focus::-ms-track {
-  @include range-track-focus();
-}
+// input[type=range]:focus::-webkit-slider-runnable-track {
+//   @include range-track-focus();
+// }
+// input[type=range]:focus::-moz-range-track {
+//   @include range-track-focus();
+// }
+// input[type=range]:focus::-ms-track {
+//   @include range-track-focus();
+// }
 input[type=range]::-ms-fill-lower {
   //@include range-track();
   display: none;

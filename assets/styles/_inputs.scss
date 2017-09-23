@@ -24,10 +24,10 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-input:focus {
-  box-shadow: 0 0 0 2px opacity($hilite, 1);
-  outline: none;
-}
+// input:focus {
+//   box-shadow: 0 0 0 2px opacity($hilite, 1);
+//   outline: none;
+// }
 
 button,
 .button {

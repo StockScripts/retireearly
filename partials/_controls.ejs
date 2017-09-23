@@ -1,32 +1,35 @@
 <form class="controls">
   <div class="control">
-      Kokeile valmiita suunnitelmia:
-      <br>
-      <button class="button-link" type="reset" value="save_for_kid">
-        Pesämuna muksulle
-      </button>
-      <br>
-      <button class="button-link" type="reset" value="invest_student_loan">
-        Opintolainat kasvamaan
-      </button>
-      <br>
-      <button class="button-link" type="reset" value="save_for_retirement">
-        Kolmikymppisenä eläkesäästäjäksi
-      </button>
-      <br>
-      <button class="button-link" type="reset" value="zero">
-        Nollaa valinnat
-      </button>
-      <br>
-      <button class="button-link" type="reset" value="dev">
-        DEBUG
-      </button>
+    <b>Kokeile valmiita suunnitelmia:</b>
+    <br>
+    <br>
+    <button class="button-link" type="reset" value="save_for_kid">
+      Pesämuna muksulle
+    </button>
+    <br>
+    <button class="button-link" type="reset" value="invest_student_loan">
+      Opintolainat kasvamaan
+    </button>
+    <br>
+    <button class="button-link" type="reset" value="save_for_retirement">
+      Kolmikymppisenä eläkesäästäjäksi
+    </button>
+    <br>
+    <button class="button-link" type="reset" value="zero">
+      Nollaa valinnat
+    </button>
+    <br>
+    <!-- <button class="button-link" type="reset" value="dev">
+      DEBUG
+    </button> -->
+    <br>
+    <br>
   </div>
   <div class="control">
     <label for="start_year_num">Aloitan</label>
     <input type="number" data-parse="int" name="start_year" id="start_year_num" min="0" max="120" step="1" value="0" aria-describedby="start_year_num_unit start_year_num_desc">
-    <span class="unit" id="start_year_num_unit"></span>
-    <span class="desc" id="start_year_num_desc"> vuotiaana</span>
+    <!-- <span class="unit" id="start_year_num_unit"></span> -->
+    <span class="desc" id="start_year_num_desc">vuotiaana</span>
     <input type="range" data-parse="int" name="start_year" id="start_year_range" min="0" max="60" step="1" value="0">
   </div>
 
@@ -34,7 +37,7 @@
     <label for="end_year_num">Säästän</label>
     <input type="number" data-parse="int" name="end_year" id="end_year_num" min="0" max="120" step="1" value="0" aria-describedby="end_year_num_unit">
     <span hidden class="unit" id="end_year_num_unit"></span>
-    <span class="desc" id="end_year_num_desc"> vuotiaaksi</span>
+    <span class="desc" id="end_year_num_desc">vuotiaaksi</span>
     <input type="range" data-parse="int" name="end_year" id="end_range_num" min="0" max="80" step="1" value="0">
   </div>
 
@@ -42,7 +45,7 @@
     <label for="start_sum_num">Minulla on jo</label>
     <input type="number" data-parse="int" name="start_sum" id="start_sum_num" min="0" max="" step="100" value="0" aria-describedby="start_sum_num_unit start_sum_num_desc">
     <span class="unit" id="start_sum_num_unit">€</span>
-    <span class="desc" id="start_sum_num_desc"> säästössä</span>
+    <span class="desc" id="start_sum_num_desc">säästössä</span>
     <input type="range" data-parse="int" name="start_sum" id="start_sum_range" min="0" max="20000" step="100" value="0">
   </div>
 
@@ -50,7 +53,7 @@
     <label for="monthly_investment_num">Säästän</label>
     <input type="number" data-parse="int" name="monthly_investment" id="monthly_investment_num" min="0" max="" step="10" value="0" aria-describedby="monthly_investment_num_unit">
     <span class="unit" id="monthly_investment_num_unit">€</span>
-    <span class="desc" id="monthly_investment_num_desc"> kuukausittain</span>
+    <span class="desc" id="monthly_investment_num_desc">kuukausittain</span>
     <input type="range" data-parse="int" name="monthly_investment" id="monthly_investment_range" min="0" max="1000" step="10" value="0">
   </div>
 
@@ -62,7 +65,7 @@
     <label for="interest_rate_num">Toivon</label>
     <input type="number" data-parse="float" name="interest_rate" id="interest_rate_num" min="0" step="0.1" value="0" aria-describedby="interest_rate_num_unit_1 interest_rate_num_unit">
     <span class="unit" id="interest_rate_num_unit">%</span>
-    <span class="desc" id="interest_rate_num_desc"> vuotuista kasvua</span>
+    <span class="desc" id="interest_rate_num_desc">vuotuista kasvua</span>
     <input type="range" data-parse="float" name="interest_rate" id="interest_rate_range" min="0" max="12" step="0.1" value="0">
   </div>
 
@@ -70,7 +73,7 @@
     <label for="total_expense_ratio_num">Maksan</label>
     <input type="number" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_num" min="0" step="0.01" value="0" aria-describedby="total_expense_ratio_unit">
     <span class="unit" id="total_expense_ratio_unit">%</span>
-    <span class="desc" id="total_expense_ratio_unit"> kuluja</span>
+    <span class="desc" id="total_expense_ratio_unit">kuluja</span>
     <input type="range" data-parse="float" name="total_expense_ratio" id="total_expense_ratio_range" min="0" max="5" step="0.1" value="0">
   </div>
 
@@ -78,20 +81,20 @@
   </div>
 
   <div class="control">
-    <label for="usage_year_num">Alan käyttää rahoja</label>
+    <label for="usage_year_num">Alan nostaa rahoja</label>
     <input type="number" data-parse="int" name="usage_year" id="usage_year_num" min="0" max="120" step="1" value="0" aria-describedby="usage_year_unit">
     <!-- <span class="unit" id="usage_year_unit"></span> -->
-    <span class="desc" id="usage_year_unit"> vuotiaana</span>
+    <span class="desc" id="usage_year_unit">vuotiaana</span>
     <input type="range" data-parse="float" name="usage_year" id="usage_year_range" min="0" max="120" step="1" value="0">
   </div>
 
   <div class="control">
     <label for="monthly_usage_num">
-      Käyttäisin lopulta
+      Nostan
     </label>
     <input type="number" data-parse="int" name="monthly_usage" id="monthly_usage_num" min="0" max="" step="10" value="0" aria-describedby="monthly_usage_num_unit monthly_usage_num_desc">
     <span class="unit" id="monthly_usage_num_unit">€</span>
-    <span class="desc" id="monthly_usage_num_desc"> kuussa</span>
+    <span class="desc" id="monthly_usage_num_desc">kuussa</span>
     <input type="range" data-parse="int" name="monthly_usage" id="monthly_usage_range" min="0" max="5000" step="100" value="0">
   </div>
 

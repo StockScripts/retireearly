@@ -5,7 +5,7 @@
   justify-content: center;
   padding: calc(2.5vh + 2.5%) 2rem;
   color: $light;
-  background: $hblue;
+  background: $hdark;
 }
 
 .control {
@@ -16,12 +16,13 @@
   display: inline-block;
   vertical-align: baseline;
 }
-.control .unit {
-  // font-size: 2rem;
-  color: $hilite;
-}
 .control label {
   cursor: pointer;
+}
+.control [type=number],
+.control .unit {
+  // font-size: 2rem;
+  color: $blightblue;
 }
 .control label:hover + input,
 .control label + input:hover, {
