@@ -51,27 +51,39 @@ function syncInputs (el) {
 }
 
 
-function constrainInputs (exclude, nodes) {
+//TODO: commented out for now
+//TODO: if i do constraints, I need to get all values on each event instad of reading just the user changed value
+// function constrainYears (source, nodes) {
 
-  const name = exclude.name
+//   const name = source.name
+//   const value = source.value
 
-  //TODO TODO TODO TODO
-  if (name == 'start_year') {
-    //TODO TODO TODO TODO
-    //push nodes.end_year up to nodes.this value
-    //push nodes.usage_year up to nodes.end_year.value
-  }
-  if (name == 'end_year') {
-    //TODO TODO TODO TODO
-    //push nodes.start_year down to nodes.this value
-    //push nodes.usage_year up to nodes.end_year.value
-  }
-  if (name == 'usage_year') {
-    //TODO TODO TODO TODO
-    //push nodes.end_year down to nodes.this value
-    //push nodes.start_year down to nodes.end_year
-  }
-}
+//   if (name == 'start_year') {
+//     const end_val = Math.max(value, end_year_num.value)
+//     const usage_val = Math.max(value, usage_year_num.value)
+//     end_year_num.value = end_val
+//     end_year_range.value = end_val
+//     usage_year_num.value = usage_val
+//     usage_year_range.value = usage_val
+//   }
+//   if (name == 'end_year') {
+//     const start_val = Math.min(value, start_year_num.value)
+//     const usage_val = Math.max(value, usage_year_num.value)
+//     start_year_num.value = start_val
+//     start_year_range.value = start_val
+//     usage_year_num.value = usage_val
+//     usage_year_range.value = usage_val
+//   }
+//   if (name == 'usage_year') {
+//     const start_val = Math.min(value, start_year_num.value)
+//     const end_val = Math.min(value, end_year_num.value)
+//     start_year_num.value = start_val
+//     start_year_range.value = start_val
+//     end_year_num.value = end_val
+//     end_year_range.value = end_val
+//   }
+// }
+
 
 
 

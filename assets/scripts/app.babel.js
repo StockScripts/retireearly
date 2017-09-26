@@ -114,10 +114,10 @@ domready(() => {
   const main = e => {
     if (e) {
       const el = e.target
-      constrainInputs(el)
+      //constrainYears(el) //TODO: if i do constraints, I need to get all values on each event instad of reading just the user changed value, or update opts while constraining values
       syncInputs(el)
       const name = el.name
-      const opt = getOpt(e.target)
+      const opt = getOpt(el)
       Object.assign(opts, opt) //Update opts
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }
