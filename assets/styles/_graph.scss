@@ -35,87 +35,56 @@
   top: 0;
   left: 0;
 }
-.graph polyline {
+polyline {
   stroke-linecap: round;
   stroke-width: 3;
   stroke: $hilite;
   fill: none;
 }
-.graph .savings {
+.savings {
   stroke: opacity($hilite, .3);
 }
-.graph .profit {
+.profit {
   stroke: opacity($hilite, 1);
 }
-.graph .growth {
+.growth {
   stroke: opacity($hilite, 1);
 }
-.graph .usage {
+.usage {
   stroke: opacity($hilite, 1);
 }
-.graph .end_year_line {
+.end_year_line {
   stroke-width: 1.5;
   stroke: opacity($dark, .2);
 }
-.graph .top_year_line {
+.top_year_line {
   stroke-width: 1.5;
   stroke: opacity($dark, .2);
 }
 
-.axis {
-  font-size: 2rem;
-  line-height: 1;
-  font-weight: 700;
-  text-transform: uppercase;
-  display: block;
-  position: absolute;
-  color: opacity($dark, .2);
-  mix-blend-mode: multiply;
-  @media (max-width: 1000px) {
-    font-size: 1rem
-  }
-}
-
-.y-axis {
-  top: .5rem;
-  // left: -.25rem;
-  right: 100%;
-  transform: rotate(90deg) translateX(100%);
-  transform-origin: right top;
-  @media (max-width: 1000px) {
-    top: .5rem;
-    right: auto;
-    left: 0;
-    transform-origin: left top;
-    transform: rotate(90deg) translateY(-100%);
-  }
-}
-.x-axis {
-  // bottom: -.25rem;
-  top: calc(100% + .25rem);
-  right: .0rem;
-  @media (max-width: 1000px) {
-    top: auto;
-    bottom: 0;
-    right: .25rem;
-  }
-}
 
 .x.label {
   font-size: .8rem;
-  font-weight: 700;
-  line-height: 1;
+  font-weight: 600;
+  line-height: 1rem;
   white-space: nowrap;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   position: absolute;
   top: 100%;
-  margin-top: .5rem;
+  margin-top: calc(-.5rem + 2px);
   width: 1px;
 }
+.x.label > span {
+  color: $bg;
+  background: $color;
+  padding: 0 .3rem;
+  border-radius: 9rem;
+}
+
 .y.label {
-  font-size: .8rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
@@ -123,27 +92,22 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   position: absolute;
-  top: 100%;
   width: 1px;
-}
-.y.label span {
-  display: inline-block;
-  line-height: 1;
-}
-.y.saved_sum_label,
-.y.top_sum_label {
-  font-size: 1rem;
   top: auto;
   margin-top: 0;
   margin-bottom: .25rem;
   text-shadow:
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg,
-    0 0 8px $bg;
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg,
+    0 0 6px $bg;
+}
+.y.label span {
+  display: inline-block;
+  line-height: 1;
 }
