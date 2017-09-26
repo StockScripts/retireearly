@@ -1,22 +1,14 @@
 <div class="graph">
-  <div class="graph-inner">
-    <svg id="graph-svg" class="graph-svg" preserveaspectratio="none">
+  <div class="graph_inner">
+    <svg class="graph_svg" preserveaspectratio="none">
         <title id="graph-title">Graph</title>
         <g class="lines">
           <polyline class="end_year_line"/>
           <polyline class="top_year_line"/>
-          <polyline class="savings"/>
-          <polyline class="profit"/>
-          <polyline class="usage"/>
-          <polyline class="growth"/>
+          <polyline class="savings_line"/>
+          <polyline class="value_line"/>
         </g>
     </svg>
-    <span class="axis x-axis" hidden>
-      Aika
-    </span>
-    <span class="axis y-axis" hidden>
-      Raha
-    </span>
     <span class="x label start_year_label">
       <span class="nowrap"><span class="start_year"></span>v</span>
     </span>
@@ -27,7 +19,7 @@
       <span class="nowrap"><span class="end_year"></span>v</span>
     </span>
     <b class="y label saved_sum_label">
-      <small class="tiny caps">Rahaa sisään</small>
+      <small class="tiny caps">Säästöt</small>
       <span class="break"></span>
       <span class="nowrap"><span class="saved_sum"></span> €</span>
     </b>
@@ -35,7 +27,7 @@
       <span class="nowrap"><span class="top_year"></span>v</span>
     </span>
     <b class="y label top_sum_label">
-      <small class="tiny caps">Rahaa ulos</small>
+      <small class="tiny caps">Loppusumma</small>
       <span class="break"></span>
       <span class="nowrap"><span class="top_sum"></span> €</span>
     </b>

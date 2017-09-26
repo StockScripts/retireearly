@@ -62,9 +62,7 @@ function renderGraph (nodes, paths) {
   nodes.graph.setAttribute('viewBox', paths.viewBox)
   nodes.lines.setAttributeNS(null, 'transform', 'translate(0, '+paths.y.range+') scale(1,-1)') //transform coordinate system to start from bottom left
   nodes.savings.setAttributeNS(null, 'points', paths.savings)
-  nodes.profit.setAttributeNS(null, 'points', paths.profit)
-  nodes.growth.setAttributeNS(null, 'points', paths.growth)
-  nodes.usage.setAttributeNS(null, 'points', paths.usage)
+  nodes.value.setAttributeNS(null, 'points', paths.profit)
   nodes.endYearLine.setAttributeNS(null, 'points', paths.endYearLine)
   nodes.topYearLine.setAttributeNS(null, 'points', paths.topYearLine)
 }

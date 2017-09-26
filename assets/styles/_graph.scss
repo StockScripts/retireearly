@@ -14,7 +14,7 @@
   background: $bg;
   box-shadow: 0 1.5rem 2rem -1rem black(.5);
 }
-.graph-inner {
+.graph_inner {
   flex: 1 0 auto;
   align-self: stretch;
   position: relative;
@@ -28,7 +28,7 @@
     margin: 2.25rem 1.5rem 1.5rem 1.5rem;
   }
 }
-.graph-svg {
+.graph_svg {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -41,65 +41,21 @@
   stroke: $hilite;
   fill: none;
 }
-.graph .savings {
+.savings_line {
   stroke: opacity($hilite, .3);
 }
-.graph .profit {
+.value_line {
   stroke: opacity($hilite, 1);
 }
-.graph .growth {
-  stroke: opacity($hilite, 1);
-}
-.graph .usage {
-  stroke: opacity($hilite, 1);
-}
-.graph .end_year_line {
+.end_year_line {
   stroke-width: 1.5;
   stroke: opacity($dark, .2);
 }
-.graph .top_year_line {
+.top_year_line {
   stroke-width: 1.5;
   stroke: opacity($dark, .2);
 }
 
-.axis {
-  font-size: 2rem;
-  line-height: 1;
-  font-weight: 700;
-  text-transform: uppercase;
-  display: block;
-  position: absolute;
-  color: opacity($dark, .2);
-  mix-blend-mode: multiply;
-  @media (max-width: 1000px) {
-    font-size: 1rem
-  }
-}
-
-.y-axis {
-  top: .5rem;
-  // left: -.25rem;
-  right: 100%;
-  transform: rotate(90deg) translateX(100%);
-  transform-origin: right top;
-  @media (max-width: 1000px) {
-    top: .5rem;
-    right: auto;
-    left: 0;
-    transform-origin: left top;
-    transform: rotate(90deg) translateY(-100%);
-  }
-}
-.x-axis {
-  // bottom: -.25rem;
-  top: calc(100% + .25rem);
-  right: .0rem;
-  @media (max-width: 1000px) {
-    top: auto;
-    bottom: 0;
-    right: .25rem;
-  }
-}
 
 .x.label {
   font-size: .8rem;

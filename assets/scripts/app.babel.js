@@ -67,57 +67,25 @@ domready(() => {
   let data = []
 
 
-  //Cache nodes
-  const nodes = {
-    graph: domOne('#graph-svg'),
-    lines: domOne('.lines'),
-    savings: domOne('svg .savings'),
-    profit: domOne('svg .profit'),
-    growth: domOne('svg .growth'),
-    usage: domOne('svg .usage'),
-
-    endYearLine: domOne('.end_year_line'),
-    topYearLine: domOne('.top_year_line'),
-
-    startYear: domAll('.start_year'),
-    startYearLabel: domOne('.start_year_label'),
-    startSum: domAll('.start_sum'),
-
-    endYear: domAll('.end_year'),
-    endYearLabel: domOne('.end_year_label'),
-
-    savedSum: domAll('.saved_sum'),
-    savedSumLabel: domOne('.saved_sum_label'),
-
-    topYear: domAll('.top_year'), //Top year is not necessarily the biggest monetary value if the costs are high, but let's assume we're calculating positive growth. :)
-    topYearLabel: domOne('.top_year_label'),
-    topSum: domAll('.top_sum'),
-    topSumLabel: domOne('.top_sum_label'),
-
-    doneYear: domAll('.done_year'),
-    doneYearLabel: domOne('.done_year_label'),
-
-    monthlyUsage: domAll('.monthly_usage'),
-    numberInputs: domAll('[type=number]'),
-    rangeInputs: domAll('[type=range]'),
-
-    start_year_num: domOne('#start_year_num'),
-    start_year_range: domOne('#start_year_range'),
-    end_year_num: domOne('#end_year_num'),
-    end_year_range: domOne('#end_year_range'),
-    usage_year_num: domOne('#usage_year_num'),
-    usage_year_range: domOne('#usage_year_range'),
-  }
-
+  //Cache nodes to easy to access objects. (In general, don't do this. Code & html get very tightly coupled.)
+  const ids = domAll('[id]').reduce((acc, item, index, array) => {
+    return {[item.id]: item}
+  }, {})
+  const inputs = domAll('[name]').reduce((acc, item, index, array) => {
+    return {[item.name]: item}
+  }, {})
+  const slots = domAll('[data-slot]').reduce((acc, item, index, array) => {
+    return {[item.dataset.slot]: item}
+  }, {})
 
 
   const main = e => {
     if (e) {
       const el = e.target
-      constrainInputs(el)
       syncInputs(el)
+      //constrainYears(el) //TODO: if i do constraints, I need to get all values on each event instad of reading just the user changed value, or update opts while constraining values
       const name = el.name
-      const opt = getOpt(e.target)
+      const opt = getOpt(el)
       Object.assign(opts, opt) //Update opts
       localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
     }
