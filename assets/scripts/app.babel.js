@@ -64,35 +64,38 @@ domready(() => {
   }
   let defaults = presets['zero']
   let opts = {}
-  let data = []
 
 
   //Cache nodes to easy to access objects. (In general, don't do this. Code & html get very tightly coupled.)
-  const ids = domAll('[id]').reduce((acc, item, index, array) => {
-    return {[item.id]: item}
-  }, {})
-  const inputs = domAll('[name]').reduce((acc, item, index, array) => {
-    return {[item.name]: item}
-  }, {})
-  const slots = domAll('[data-slot]').reduce((acc, item, index, array) => {
-    return {[item.dataset.slot]: item}
-  }, {})
+  const els = domAll('[id]').reduce((obj, el) => obj[el.id] = el, {})
+  const vals = domAll('[name]').reduce((obj, el) => obj[el.name] = el, {})
+  const slots = domAll('[data-slot]').reduce((obj, el) => obj[el.dataset.slot] = el, {})
 
 
   const main = e => {
     if (e) {
-      const el = e.target
-      syncInputs(el)
-      //constrainYears(el) //TODO: if i do constraints, I need to get all values on each event instad of reading just the user changed value, or update opts while constraining values
-      const name = el.name
-      const opt = getOpt(el)
-      Object.assign(opts, opt) //Update opts
-      localStorage.setItem(name, opt[name]) //Save changed opt to localStorage
+      const el =
+      syncInputs(e.target)
     }
-    data = calculator(opts)
-    graph(data, nodes, opts)
+
+    //Read all inputs on each update
+    for (name in vals) {
+      opts[name] = parseFloat(vals.value)
+    }
+    const data = calculator(opts)
+    graph(data, els, slots, opts)
   }
 
+
+  const update = (opts, el) => {
+
+    //constrainYears(el) //TODO: if i do constraints, I need to get all values on each event instad of reading just the user changed value, or update opts while constraining values
+    const name = el.name
+    const opt = getOpt(el)
+    localStorage.setItem(name, opt[name]) //Save changed opt to localStorage //TODO: namespace or some such, this may not always be on its own domain
+    opts = Object.assign(opts, opt) //Update global opts
+    return opts
+  }
 
 
   const init = () => {
