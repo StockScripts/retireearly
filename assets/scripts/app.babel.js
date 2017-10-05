@@ -100,13 +100,6 @@ domready(() => {
     monthlyUsage: domAll('.monthly_usage'),
     numberInputs: domAll('[type=number]'),
     rangeInputs: domAll('[type=range]'),
-
-    start_year_num: domOne('#start_year_num'),
-    start_year_range: domOne('#start_year_range'),
-    end_year_num: domOne('#end_year_num'),
-    end_year_range: domOne('#end_year_range'),
-    usage_year_num: domOne('#usage_year_num'),
-    usage_year_range: domOne('#usage_year_range'),
   }
 
 
